@@ -6,7 +6,7 @@ import { config, fields, collection } from '@keystatic/core';
 export default config({
   storage: {
     kind: 'github',
-    repo: 'REPLACE_WITH/your-repo', // e.g. maxg/french-riviera-tips
+    repo: 'maksgallo-cpu/french-riviera-tips', // e.g. maxg/french-riviera-tips
   },
   ui: {
     brand: { name: 'French Riviera Tips' },
