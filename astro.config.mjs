@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import react from '@astrojs/react';
 import keystatic from '@keystatic/astro';
+import netlify from '@astrojs/netlify';
 import rehypeAffiliate from './src/lib/affiliate-rehype.mjs';
 
 // French Riviera Tips — Astro config
@@ -9,6 +10,7 @@ import rehypeAffiliate from './src/lib/affiliate-rehype.mjs';
 export default defineConfig({
   site: 'https://www.frenchrivieratips.com',
   output: 'hybrid',
+  adapter: netlify(),
   integrations: [
     react(),
     keystatic(),
