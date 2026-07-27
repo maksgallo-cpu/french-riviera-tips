@@ -1,0 +1,42 @@
+---
+import { THEMES, DEST_ZONES, placeSlug } from '../lib/site.js';
+const path = Astro.url.pathname;
+const isActive = (href) => path === href || (href !== '/' && path.startsWith(href));
+---
+<header style="position:sticky;top:0;z-index:100;background:oklch(0.99 0.004 85/0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)">
+  <div class="wrap" style="padding-top:15px;padding-bottom:15px;display:flex;align-items:center;gap:26px">
+    <a href="/" style="display:flex;align-items:center;gap:10px;flex-shrink:0">
+      <div class="frt-disc" style="width:34px;height:34px;font-size:12.5px;letter-spacing:-0.02em">FRT</div>
+      <span style="font-family:'Bricolage Grotesque';font-weight:800;font-size:19px;letter-spacing:-0.03em;line-height:1">French Riviera<span style="color:var(--coral)"> Tips</span></span>
+    </a>
+    <nav class="hide-mobile" style="display:flex;gap:20px;font-size:14px;font-weight:500;color:var(--soft);margin-left:6px;align-items:center">
+      <div class="has-mega" style="position:relative">
+        <a href="/destinations" style="display:flex;align-items:center;gap:4px;padding:4px 0;color:var(--coral-deep);font-weight:600">Destinations <span style="font-size:10px">▾</span></a>
+        <div class="mega">
+          {DEST_ZONES.map((zone) => (
+            <div>
+              <div class="mega-col-h">{zone.label}</div>
+              {zone.places.map((p) => (
+                <a href={`/destinations/${placeSlug(p)}`}>{p}</a>
+              ))}
+            </div>
+          ))}
+          <a href="/destinations" style="display:flex;flex-direction:column;justify-content:space-between;background:var(--deep);border-radius:12px;padding:16px;color:#fff;min-height:150px">
+            <div style="font-size:26px">🗺</div>
+            <div>
+              <div style="font-family:'Bricolage Grotesque';font-weight:700;font-size:15px;line-height:1.2">Browse all destinations</div>
+              <div style="font-size:12px;color:#ffffffbb;margin-top:4px">Every town &amp; village →</div>
+            </div>
+          </a>
+        </div>
+      </div>
+      {THEMES.map((t) => (
+        <a href={t.href} style={`padding:4px 0;${isActive(t.href) ? 'color:var(--coral-deep);font-weight:600' : ''}`}>{t.label}</a>
+      ))}
+    </nav>
+    <a href="/destinations" class="hide-mobile" style="margin-left:auto;display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:9px 16px;font-size:13px;color:var(--faint)">
+      <span style="width:13px;height:13px;border:2px solid var(--faint);border-radius:50%;display:inline-block"></span>
+      Explore the Riviera
+    </a>
+  </div>
+</header>

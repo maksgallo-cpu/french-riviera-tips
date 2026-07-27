@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /keystatic
+
+Sitemap: https://www.frenchrivieratips.com/sitemap-index.xml

@@ -1,0 +1,37 @@
+# Netlify redirects — French Riviera Tips migration
+#
+# Articles keep their EXACT Wix path (/post/<slug>) so there are ZERO article redirects
+# and no SEO loss. Only the old Wix CATEGORY URLs change, so we 301 them to the new
+# theme/place pages. Left = old Wix URL, middle = new URL, right = status.
+
+# --- Theme categories (renamed / merged) ---
+/blog-french-riviera-tip/categories/destination      /destinations       301
+/blog-french-riviera-tip/categories/hotels            /hotels             301
+/blog-french-riviera-tip/categories/activities        /activities         301
+/blog-french-riviera-tip/categories/hidden-gems       /hidden-gems        301
+/blog-french-riviera-tip/categories/tips              /tips               301
+# Merged: Shops -> Tips, Secret Beach -> Hidden Gems, Restaurants -> Tips (parked)
+/blog-french-riviera-tip/categories/shops             /tips               301
+/blog-french-riviera-tip/categories/secret-beach      /hidden-gems        301
+/blog-french-riviera-tip/categories/restaurants       /tips               301
+
+# --- Place categories -> new /destinations/<city> pages ---
+/blog-french-riviera-tip/categories/nice                    /destinations/nice                    301
+/blog-french-riviera-tip/categories/monaco                  /destinations/monaco                  301
+/blog-french-riviera-tip/categories/cannes                  /destinations/cannes                  301
+/blog-french-riviera-tip/categories/antibes                 /destinations/antibes                 301
+/blog-french-riviera-tip/categories/villefranche-sur-mer    /destinations/villefranche-sur-mer    301
+/blog-french-riviera-tip/categories/theoule-sur-mer         /destinations/theoule-sur-mer         301
+/blog-french-riviera-tip/categories/roquebrune-cap-martin   /destinations/roquebrune-cap-martin   301
+/blog-french-riviera-tip/categories/saint-jean-cap-ferrat   /destinations/saint-jean-cap-ferrat   301
+/blog-french-riviera-tip/categories/biot                    /destinations/biot                    301
+/blog-french-riviera-tip/categories/saint-tropez            /destinations/saint-tropez            301
+
+# Old blog index -> new home
+/blog-french-riviera-tip    /    301
+
+# Legal pages (accented Wix slugs) -> clean ASCII slugs
+/mentions-légales               /legal-notices     301
+/politique-de-confidentialité   /privacy           301
+/politique-de-cookies           /cookies           301
+/copie-de-legal-notices         /accessibility     301

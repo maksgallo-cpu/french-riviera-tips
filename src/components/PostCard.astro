@@ -1,0 +1,35 @@
+---
+import { THEME_COLOR } from '../lib/site.js';
+// A guide card. Props: post (collection entry), variant: 'default' | 'wide' | 'row'
+const { post, variant = 'default' } = Astro.props;
+const { data, slug } = post;
+const href = `/post/${slug}`;
+const accent = THEME_COLOR[data.theme] || 'var(--coral)';
+const hero = data.heroImage;
+---
+{variant === 'row' ? (
+  <a href={href} class="card" style="display:flex;gap:16px;border-radius:16px;padding:14px;align-items:center">
+    <div class="ph" style={`width:112px;height:82px;flex-shrink:0;border-radius:11px;background-image:url(${hero});background-size:cover;background-position:center`}></div>
+    <div style="padding:2px 4px 2px 0">
+      <span style={`font-size:11px;font-weight:700;letter-spacing:0.04em;color:${accent}`}>{data.theme.toUpperCase()}</span>
+      <h3 style="font-family:'Bricolage Grotesque';font-weight:600;font-size:16.5px;line-height:1.18;margin-top:5px;text-wrap:balance">{data.h1}</h3>
+      {data.readTime && <div style="font-size:12.5px;color:var(--faint);margin-top:8px">{data.readTime}</div>}
+    </div>
+  </a>
+) : (
+  <a href={href} class="card" style="display:block">
+    <div class="ph" style={`position:relative;min-height:${variant === 'wide' ? '300px' : '170px'};background-image:url(${hero});background-size:cover;background-position:center`}>
+      <span class="pill" style={`position:absolute;top:12px;right:12px;background:${accent};color:#fff`}>{data.theme.toUpperCase()}</span>
+    </div>
+    <div style={`padding:${variant === 'wide' ? '24px 26px 28px' : '18px 20px 20px'}`}>
+      <span style={`font-size:11px;font-weight:700;letter-spacing:0.04em;color:${accent}`}>{(data.place || data.theme).toUpperCase()}</span>
+      <h3 style={`font-family:'Bricolage Grotesque';font-weight:700;font-size:${variant === 'wide' ? '26px' : '18px'};line-height:1.14;letter-spacing:-0.01em;margin-top:5px;text-wrap:balance`}>{data.h1}</h3>
+      {variant === 'wide' && data.description && (
+        <p style="color:var(--soft);font-size:15px;margin-top:10px;text-wrap:pretty">{data.description}</p>
+      )}
+      <div style="display:flex;align-items:center;gap:10px;margin-top:14px;font-size:12.5px;color:var(--faint)">
+        <span>{data.author}</span>{data.readTime && <><span>•</span><span>{data.readTime}</span></>}
+      </div>
+    </div>
+  </a>
+)}

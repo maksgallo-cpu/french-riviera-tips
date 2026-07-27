@@ -1,0 +1,250 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import Newsletter from '../components/Newsletter.astro';
+import { SITE, DEST_ZONES, placeSlug, THEME_COLOR } from '../lib/site.js';
+
+const all = (await getCollection('posts', (p) => !p.data.draft)).sort(
+  (a, b) => +b.data.pubDate - +a.data.pubDate
+);
+const byTheme = (t, n) => all.filter((p) => p.data.theme === t).slice(0, n);
+
+const events = byTheme('Events', 3);
+const tips = byTheme('Tips', 3);
+const gems = byTheme('Hidden Gems', 3);
+const latest = all.slice(0, 4);
+const featured = latest[0];
+const featSide = latest.slice(1, 4);
+
+const themes = [
+  { name: 'Destinations', href: '/destinations', bg: 'var(--azure-tint)', bd: 'oklch(0.90 0.035 232)', ic: 'var(--azure)', gl: '◎', d: 'Towns & villages worth your time' },
+  { name: 'Hotels', href: '/hotels', bg: 'var(--coral-tint)', bd: 'oklch(0.90 0.04 45)', ic: 'var(--coral)', gl: '⌂', d: 'Where to stay, every budget' },
+  { name: 'Activities', href: '/activities', bg: 'oklch(0.96 0.03 150)', bd: 'oklch(0.90 0.035 150)', ic: 'oklch(0.60 0.12 150)', gl: '◈', d: 'Beaches, sports & culture' },
+  { name: 'Events', href: '/events', bg: 'oklch(0.96 0.035 325)', bd: 'oklch(0.90 0.04 325)', ic: 'oklch(0.58 0.16 325)', gl: '✦', d: 'F1, festivals, carnivals & regattas' },
+  { name: 'Hidden Gems', href: '/hidden-gems', bg: 'oklch(0.96 0.03 195)', bd: 'oklch(0.90 0.035 195)', ic: 'oklch(0.55 0.10 200)', gl: '◇', d: 'Secret beaches & quiet villages' },
+  { name: 'Tips', href: '/tips', bg: 'oklch(0.96 0.04 85)', bd: 'oklch(0.90 0.05 85)', ic: 'oklch(0.70 0.13 78)', gl: '✷', d: 'Parking, budget & getting around' },
+];
+
+const iconic = [
+  { name: 'Nice', d: 'Old Town, Promenade des Anglais, museums', h: 42 },
+  { name: 'Cannes', d: 'La Croisette, film festival, island escapes', h: 232 },
+  { name: 'Monaco', d: 'Casino Monte-Carlo, Grand Prix, palace', h: 325 },
+  { name: 'Èze', d: 'Cliffside village, gardens, panoramas', h: 150 },
+  { name: 'Antibes', d: "Picasso Museum, Cap d'Antibes, harbour", h: 85 },
+  { name: 'Saint-Paul-de-Vence', d: 'Art galleries, medieval streets', h: 20 },
+];
+
+const faqs = [
+  { q: 'When is the best time to visit the French Riviera?', a: 'May, June and September are the sweet spot: warm sea, long days and far fewer crowds than July–August. Winter is quiet and cheap, with sunny days ideal for sightseeing.' },
+  { q: 'How do I get around the Riviera without a car?', a: 'The coastal train (SNCF/TER) links Nice, Cannes, Monaco and Menton every few minutes and is the fastest way to hop between towns. Lignes d\u2019Azur buses reach the hilltop villages; ferries run in summer.' },
+  { q: 'Which town should I base myself in?', a: 'Nice is the easiest first-time base — airport, trains and beaches in one walkable city. For a quieter, better-value stay, pick Villefranche-sur-Mer, Antibes or Menton and day-trip from there.' },
+  { q: 'Can I visit the Riviera on a budget?', a: 'Yes. Stay in neighbouring towns rather than central Cannes or Monaco, eat at local bistros and markets, use trains over taxis, and enjoy the free beaches, gardens and coastal walks.' },
+  { q: 'What are the must-see events in 2026?', a: 'The Monaco F1 Grand Prix and Festival de Cannes (both May), Nice Carnival (February), Les Plages Électroniques (August, Cannes) and Les Voiles de Saint-Tropez (autumn). Book accommodation months ahead.' },
+  { q: 'How do I get from Nice airport to the city and nearby towns?', a: 'Tram T2 runs from both terminals to the city centre in about 25 minutes for a few euros; T1 continues into town. For Cannes, Monaco or Antibes, take the airport express bus or a pre-booked private transfer. Taxis and Uber are available but pricier at peak times.' },
+  { q: 'Where are the best free and hidden beaches?', a: 'Skip the paid clubs: try La Darse in Villefranche-sur-Mer, the coves around Cap d\u2019Antibes, Théoule-sur-Mer\u2019s red-rock beaches, and the wild calanques near Saint-Jean-Cap-Ferrat. Bring water shoes — many are pebble.' },
+  { q: 'Which hilltop villages are worth a day trip?', a: 'Èze for cliffside panoramas, Saint-Paul-de-Vence for art galleries and medieval lanes, and Biot for its glass-blowing tradition. All are reachable by bus or a short drive from Nice or Antibes.' },
+  { q: 'Do I need a car on the French Riviera?', a: 'Not for the coast — the train and buses cover Nice, Cannes, Monaco, Menton and Antibes well. A car helps only if you plan to explore the back-country villages at your own pace. Parking in the towns is limited and pricey.' },
+];
+
+const jsonld = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: SITE.name,
+    url: SITE.url,
+    description: SITE.description,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: SITE.name,
+    url: SITE.url,
+    logo: new URL('/favicon.svg', SITE.url).href,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+];
+
+const title = "French Riviera Tips | Local Guide to the Côte d'Azur | Nice, Cannes & Monaco";
+---
+<BaseLayout title={title} description={SITE.description} jsonld={jsonld}>
+  <main id="top">
+    <!-- HERO -->
+    <section class="wrap" style="padding-top:36px">
+      <div style="position:relative;border-radius:26px;overflow:hidden;background:repeating-linear-gradient(135deg,oklch(0.72 0.09 232) 0 22px,oklch(0.70 0.10 232) 22px 44px);min-height:460px;display:flex;align-items:flex-end">
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,oklch(0.30 0.06 250/0.05) 0%,oklch(0.24 0.06 250/0.66) 100%)"></div>
+        <div style="position:relative;padding:46px;color:#fff;max-width:740px">
+          <div style="display:inline-flex;align-items:center;gap:7px;background:oklch(0.99 0.004 85/0.2);border:1px solid #ffffff55;padding:6px 13px;border-radius:999px;font-size:12.5px;font-weight:600;margin-bottom:18px;backdrop-filter:blur(4px)">✦ Local tips, updated for 2026</div>
+          <h1 style="font-weight:800;font-size:54px;line-height:1.0;letter-spacing:-0.03em;text-wrap:balance">Your complete guide to the Côte d'Azur.</h1>
+          <p style="font-size:18px;margin-top:16px;max-width:540px;color:#ffffffdd;text-wrap:pretty">Where to stay, what to see, the events worth the trip, and the hidden gems only locals know — from Nice, Cannes & Monaco to secret beaches.</p>
+          <div style="display:flex;gap:12px;margin-top:24px;flex-wrap:wrap">
+            <a href="/destinations" class="btn-coral">Explore destinations →</a>
+            <a href="/hotels" style="display:inline-block;background:#ffffff;color:var(--ink);font-weight:700;font-size:15px;padding:14px 26px;border-radius:11px">Where to stay</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPLORE BY THEME -->
+    <section class="wrap" style="padding-top:56px">
+      <div style="margin-bottom:22px">
+        <h2 style="font-weight:700;font-size:30px;letter-spacing:-0.02em">Explore by theme</h2>
+        <p style="color:var(--soft);font-size:15.5px;margin-top:4px">Everything you need, sorted the way you actually plan a trip.</p>
+      </div>
+      <div class="grid-3">
+        {themes.map((t) => (
+          <a href={t.href} style={`display:flex;flex-direction:column;background:${t.bg};border:1px solid ${t.bd};border-radius:20px;padding:26px;min-height:180px`}>
+            <div style={`width:50px;height:50px;border-radius:14px;background:${t.ic};display:flex;align-items:center;justify-content:center;color:#fff;font-size:24px`}>{t.gl}</div>
+            <h3 style="font-weight:700;font-size:22px;margin-top:auto">{t.name}</h3>
+            <p style="font-size:14.5px;color:var(--soft);margin-top:4px">{t.d}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- ICONIC DESTINATIONS -->
+    <section class="wrap" style="padding-top:56px">
+      <h2 style="font-weight:700;font-size:30px;letter-spacing:-0.02em;margin-bottom:20px">Iconic destinations</h2>
+      <div class="grid-3">
+        {iconic.map((c) => (
+          <a href={`/destinations/${placeSlug(c.name)}`} style={`display:block;border-radius:18px;overflow:hidden;position:relative;min-height:200px;background:repeating-linear-gradient(135deg,oklch(0.86 0.04 ${c.h}) 0 14px,oklch(0.89 0.04 ${c.h}) 14px 28px)`}>
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent,oklch(0.24 0.03 255/0.6));display:flex;flex-direction:column;justify-content:flex-end;padding:22px">
+              <span style="color:#fff;font-family:'Bricolage Grotesque';font-weight:700;font-size:24px">{c.name}</span>
+              <span style="color:#ffffffcc;font-size:13px;margin-top:2px">{c.d}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- EVENTS -->
+    {events.length > 0 && (
+      <section class="wrap" style="padding-top:56px">
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:22px;gap:16px;flex-wrap:wrap">
+          <div>
+            <span class="pill" style="background:oklch(0.58 0.16 325);color:#fff">EVENTS &amp; FESTIVALS</span>
+            <h2 style="font-weight:700;font-size:30px;letter-spacing:-0.02em;margin-top:12px">Guides to the Riviera's headline events</h2>
+            <p style="color:var(--soft);font-size:15.5px;margin-top:4px">Complete visitor guides — dates, tickets and where to stay — refreshed for each edition.</p>
+          </div>
+          <a href="/events" style="font-size:14.5px;font-weight:600;color:var(--coral-deep)">All events →</a>
+        </div>
+        <div class="grid-3">{events.map((p) => <PostCard post={p} />)}</div>
+      </section>
+    )}
+
+    <!-- LATEST GUIDES -->
+    <section class="wrap" style="padding-top:56px">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:22px">
+        <h2 style="font-weight:700;font-size:30px;letter-spacing:-0.02em">Latest guides</h2>
+        <a href="/destinations" style="font-size:14.5px;font-weight:600;color:var(--coral-deep)">View all →</a>
+      </div>
+      <div class="grid-2" style="grid-template-columns:1.6fr 1fr;align-items:start">
+        {featured && <PostCard post={featured} variant="wide" />}
+        <div style="display:flex;flex-direction:column;gap:20px">
+          {featSide.map((p) => <PostCard post={p} variant="row" />)}
+        </div>
+      </div>
+    </section>
+
+    <!-- TIPS -->
+    {tips.length > 0 && (
+      <section class="wrap" style="padding-top:56px">
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:22px;gap:16px;flex-wrap:wrap">
+          <div><span class="pill" style="background:oklch(0.70 0.13 78);color:#fff">TIPS</span><h2 style="font-weight:700;font-size:30px;letter-spacing:-0.02em;margin-top:12px">Practical tips that save your trip</h2></div>
+          <a href="/tips" style="font-size:14.5px;font-weight:600;color:var(--coral-deep)">All tips →</a>
+        </div>
+        <div class="grid-3">{tips.map((p) => <PostCard post={p} />)}</div>
+      </section>
+    )}
+
+    <!-- HIDDEN GEMS -->
+    {gems.length > 0 && (
+      <section class="wrap" style="padding-top:56px">
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:22px;gap:16px;flex-wrap:wrap">
+          <div><span class="pill" style="background:oklch(0.55 0.10 200);color:#fff">HIDDEN GEMS</span><h2 style="font-weight:700;font-size:30px;letter-spacing:-0.02em;margin-top:12px">The Riviera only locals know</h2></div>
+          <a href="/hidden-gems" style="font-size:14.5px;font-weight:600;color:var(--coral-deep)">All hidden gems →</a>
+        </div>
+        <div class="grid-3">{gems.map((p) => <PostCard post={p} />)}</div>
+      </section>
+    )}
+
+    <!-- WHY CHOOSE US -->
+    <section class="wrap" style="padding-top:56px">
+      <div style="text-align:center;margin-bottom:26px">
+        <span style="font-family:monospace;font-size:11px;color:var(--coral-deep);letter-spacing:0.1em">WHY CHOOSE US</span>
+        <h2 style="font-weight:700;font-size:30px;letter-spacing:-0.02em;margin-top:6px">Your trusted Riviera guide</h2>
+      </div>
+      <div class="grid-3" style="grid-template-columns:repeat(4,1fr)">
+        {[
+          { g: '📍', t: 'Local expertise', d: 'Locals and long-term residents who know the coast intimately.', bg: 'var(--coral-tint)' },
+          { g: '♥', t: 'Honest picks', d: "We don't accept payment for reviews. Every tip is genuine.", bg: 'var(--azure-tint)' },
+          { g: '↻', t: 'Always up to date', d: 'Continuously updated so your trip info is accurate.', bg: 'oklch(0.96 0.03 150)' },
+          { g: '◎', t: 'For every traveller', d: 'Luxury seekers, backpackers, families and couples alike.', bg: 'oklch(0.96 0.04 85)' },
+        ].map((c) => (
+          <div class="card" style="border-radius:16px;padding:24px">
+            <div style={`width:44px;height:44px;border-radius:12px;background:${c.bg};display:flex;align-items:center;justify-content:center;font-size:20px`}>{c.g}</div>
+            <h3 style="font-weight:700;font-size:17px;margin-top:16px">{c.t}</h3>
+            <p style="font-size:13.5px;color:var(--soft);margin-top:6px">{c.d}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- AUTHOR STRIP -->
+    <section class="wrap" style="padding-top:32px">
+      <div class="card" style="border-radius:20px;padding:28px 32px;display:flex;align-items:center;gap:22px;flex-wrap:wrap">
+        <div style="width:64px;height:64px;border-radius:50%;background:var(--deep);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque';font-weight:800;font-size:24px;flex-shrink:0">M</div>
+        <div style="flex:1;min-width:240px">
+          <div style="font-family:'Bricolage Grotesque';font-weight:700;font-size:18px">Hi, I'm Max — I write these guides from the Côte d'Azur</div>
+          <p style="font-size:14.5px;color:var(--soft);margin-top:5px;text-wrap:pretty">I write every guide from first-hand experience living and travelling the Riviera. I visit the places I recommend, and I never accept payment for reviews.</p>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <span style="font-size:12.5px;font-weight:600;color:var(--coral-deep);background:var(--coral-tint);border:1px solid oklch(0.90 0.04 45);padding:8px 14px;border-radius:999px">✓ No paid reviews</span>
+          <span style="font-size:12.5px;font-weight:600;color:var(--azure);background:var(--azure-tint);border:1px solid oklch(0.90 0.035 232);padding:8px 14px;border-radius:999px">✓ Updated regularly</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHERE TO STAY -->
+    <section class="wrap" style="padding-top:56px">
+      <div style="background:var(--deep);border-radius:24px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr" class="grid-2">
+        <div style="padding:40px 44px;color:#fff">
+          <div style="display:inline-flex;align-items:center;gap:7px;background:#ffffff1a;border:1px solid #ffffff2e;padding:5px 12px;border-radius:999px;font-size:12px;font-weight:600;color:#fff">🛏 WHERE TO STAY</div>
+          <h2 style="font-weight:700;font-size:32px;line-height:1.08;letter-spacing:-0.02em;margin-top:18px">Find & book your base on the coast</h2>
+          <p style="font-size:15.5px;color:#ffffffcc;margin-top:12px;max-width:420px;text-wrap:pretty">Compare hotels, apartments and hostels on a live map — see exactly how far each stay is from the beach, the station and the good restaurants.</p>
+          <a href="/hotels" class="btn-coral" style="margin-top:22px">Where to stay →</a>
+          <p style="font-size:11.5px;color:#ffffff88;margin-top:14px">Powered by Stay22 · we may earn a commission on bookings</p>
+        </div>
+        <div style="position:relative;min-height:340px;background:repeating-linear-gradient(135deg,oklch(0.42 0.04 244) 0 20px,oklch(0.45 0.04 244) 20px 40px);display:flex;align-items:center;justify-content:center;margin:14px;border-radius:16px">
+          <div style="text-align:center;color:#fff"><div style="font-size:30px">📍</div><div style="font-family:monospace;font-size:12px;margin-top:8px;letter-spacing:0.03em">STAY22 INTERACTIVE MAP</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section style="max-width:960px;margin:0 auto;padding:56px 32px 0">
+      <div style="text-align:center;margin-bottom:26px">
+        <span style="font-family:monospace;font-size:11px;color:var(--coral-deep);letter-spacing:0.1em">FAQ</span>
+        <h2 style="font-weight:700;font-size:30px;letter-spacing:-0.02em;margin-top:6px">French Riviera travel questions, answered</h2>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        {faqs.map((f, i) => (
+          <details class="card" style="border-radius:14px;padding:18px 22px" open={i === 0}>
+            <summary style="font-family:'Bricolage Grotesque';font-weight:600;font-size:17px;cursor:pointer;list-style:none">{f.q}</summary>
+            <p style="font-size:14.5px;color:var(--soft);margin-top:10px;line-height:1.6">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <Newsletter />
+  </main>
+</BaseLayout>

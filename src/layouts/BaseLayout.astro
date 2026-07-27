@@ -1,0 +1,60 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE } from '../lib/site.js';
+
+const {
+  title,
+  description = SITE.description,
+  image = '',
+  canonical,
+  type = 'website',
+  noindex = false,
+  jsonld = [],
+} = Astro.props;
+
+const canonicalURL = new URL(canonical ?? Astro.url.pathname, SITE.url).href;
+const ogImage = image ? new URL(image, SITE.url).href : '';
+// jsonld: array of schema.org objects to embed.
+const schemas = Array.isArray(jsonld) ? jsonld.filter(Boolean) : [jsonld];
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalURL} />
+  {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+  <!-- Open Graph -->
+  <meta property="og:type" content={type} />
+  <meta property="og:site_name" content={SITE.name} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonicalURL} />
+  {ogImage && <meta property="og:image" content={ogImage} />}
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  {ogImage && <meta name="twitter:image" content={ogImage} />}
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="alternate" type="application/rss+xml" title={SITE.name} href="/rss.xml" />
+
+  {schemas.map((s) => (
+    <script type="application/ld+json" set:html={JSON.stringify(s)} />
+  ))}
+</head>
+<body>
+  <Header />
+  <slot />
+  <Footer />
+</body>
+</html>

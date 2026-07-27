@@ -1,0 +1,61 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import Newsletter from '../../components/Newsletter.astro';
+import { SITE, DEST_ZONES, placeSlug } from '../../lib/site.js';
+
+const posts = (await getCollection('posts', (p) => !p.data.draft)).sort(
+  (a, b) => +b.data.pubDate - +a.data.pubDate
+);
+// Places that actually have at least one guide get a live badge.
+const counts = {};
+for (const p of posts) counts[p.data.place] = (counts[p.data.place] || 0) + 1;
+
+const destPosts = posts.filter(
+  (p) => p.data.theme === 'Destinations' || p.data.categories.includes('Destinations')
+);
+const hues = { 'Nice': 42, 'Villefranche-sur-Mer': 232, 'Saint-Jean-Cap-Ferrat': 200, 'Èze': 150, 'Cannes': 232, 'Antibes': 85, 'Biot': 110, 'Théoule-sur-Mer': 20, 'Monaco': 325, 'Roquebrune-Cap-Martin': 260, 'Saint-Paul-de-Vence': 20, 'Saint-Tropez': 300 };
+
+const title = "French Riviera Tips | Destinations, Towns & Villages | Côte d'Azur";
+const blurb = "Every town and village worth your time on the French Riviera — from Nice, Cannes and Monaco to the hilltop villages of the arrière-pays.";
+---
+<BaseLayout title={title} description={blurb}>
+  <main class="wrap" style="padding-top:40px">
+    <nav style="font-size:13px;color:var(--faint);display:flex;gap:8px"><a href="/">Home</a><span>/</span><span>Destinations</span></nav>
+    <div style="margin-top:18px;max-width:660px">
+      <span class="pill" style="background:var(--azure);color:#fff">DESTINATIONS</span>
+      <h1 style="font-weight:800;font-size:42px;letter-spacing:-0.03em;margin-top:14px;text-wrap:balance">Where to go on the Côte d'Azur</h1>
+      <p style="color:var(--soft);font-size:16.5px;margin-top:8px;text-wrap:pretty">{blurb}</p>
+    </div>
+
+    {DEST_ZONES.map((zone) => (
+      <section style="margin-top:38px">
+        <h2 style="font-size:15px;font-family:monospace;color:var(--faint);letter-spacing:0.08em;margin-bottom:16px">{zone.label}</h2>
+        <div class="grid-3">
+          {zone.places.map((place) => {
+            const slug = placeSlug(place);
+            const n = counts[place] || 0;
+            const h = hues[place] ?? 232;
+            return (
+              <a href={`/destinations/${slug}`} style={`display:block;border-radius:18px;overflow:hidden;position:relative;min-height:190px;background:repeating-linear-gradient(135deg,oklch(0.86 0.04 ${h}) 0 14px,oklch(0.89 0.04 ${h}) 14px 28px)`}>
+                <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent,oklch(0.24 0.03 255/0.6));display:flex;flex-direction:column;justify-content:flex-end;padding:20px">
+                  <span style="color:#fff;font-family:'Bricolage Grotesque';font-weight:700;font-size:22px">{place}</span>
+                  <span style="color:#ffffffcc;font-size:12.5px;margin-top:2px">{n > 0 ? `${n} guide${n > 1 ? 's' : ''}` : 'Guides coming soon'}</span>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </section>
+    ))}
+
+    {destPosts.length > 0 && (
+      <section style="margin-top:48px">
+        <h2 style="font-weight:700;font-size:26px;letter-spacing:-0.02em;margin-bottom:20px">Destination guides</h2>
+        <div class="grid-3">{destPosts.map((p) => <PostCard post={p} />)}</div>
+      </section>
+    )}
+  </main>
+  <Newsletter />
+</BaseLayout>

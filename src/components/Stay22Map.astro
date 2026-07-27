@@ -1,0 +1,19 @@
+---
+// Stay22 hotel map embed. Props: embed (full https://www.stay22.com/embed/<id> URL), label
+const { embed, label = 'Hotels on a live map' } = Astro.props;
+---
+{embed && (
+  <div style="border:1px solid var(--line);border-radius:18px;overflow:hidden;margin:28px 0;background:var(--card)">
+    <div style="padding:16px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)">
+      <div style="font-family:'Bricolage Grotesque';font-weight:700;font-size:16px">🛏 {label}</div>
+      <span style="font-family:monospace;font-size:10.5px;color:var(--faint)">via Stay22 · affiliate</span>
+    </div>
+    <iframe
+      src={embed}
+      loading="lazy"
+      title={label}
+      style="width:100%;height:420px;border:0;display:block"
+      allow="geolocation"
+    ></iframe>
+  </div>
+)}

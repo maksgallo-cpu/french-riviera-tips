@@ -1,0 +1,158 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import Stay22Map from '../../components/Stay22Map.astro';
+import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
+import Newsletter from '../../components/Newsletter.astro';
+import { SITE, THEME_COLOR, placeSlug } from '../../lib/site.js';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map((post) => ({ params: { slug: post.slug }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { data } = post;
+const { Content, headings } = await post.render();
+const toc = headings.filter((h) => h.depth === 2);
+const accent = THEME_COLOR[data.theme] || 'var(--coral)';
+
+const all = await getCollection('posts', (p) => !p.data.draft);
+const related = all
+  .filter((p) => p.slug !== post.slug)
+  .map((p) => ({
+    p,
+    score: (p.data.place === data.place ? 2 : 0) + (p.data.theme === data.theme ? 1 : 0),
+  }))
+  .sort((a, b) => b.score - a.score)
+  .slice(0, 3)
+  .map((x) => x.p);
+
+const fmt = (d) => d && new Date(d).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' });
+const url = new URL(`/post/${post.slug}`, SITE.url).href;
+
+const jsonld = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: data.h1,
+    description: data.description,
+    image: data.heroImage ? [data.heroImage] : undefined,
+    datePublished: new Date(data.pubDate).toISOString(),
+    dateModified: new Date(data.updatedDate || data.pubDate).toISOString(),
+    author: { '@type': 'Person', name: data.author || SITE.author },
+    publisher: {
+      '@type': 'Organization',
+      name: SITE.name,
+      logo: { '@type': 'ImageObject', url: new URL('/favicon.svg', SITE.url).href },
+    },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url },
+      { '@type': 'ListItem', position: 2, name: data.theme, item: new URL(`/${placeSlug(data.theme)}`, SITE.url).href },
+      { '@type': 'ListItem', position: 3, name: data.h1, item: url },
+    ],
+  },
+];
+
+const themeHref = data.theme === 'Destinations' ? '/destinations' : `/${placeSlug(data.theme)}`;
+---
+<BaseLayout
+  title={data.title}
+  description={data.description}
+  image={data.heroImage}
+  type="article"
+  jsonld={jsonld}
+>
+  <main class="wrap" style="padding-top:32px">
+    <!-- Breadcrumb -->
+    <nav style="font-size:13px;color:var(--faint);display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+      <a href="/">Home</a><span>/</span>
+      <a href={themeHref} style="color:var(--coral-deep);font-weight:600">{data.theme}</a><span>/</span>
+      <span>{data.place}</span>
+    </nav>
+
+    <div class="article-grid" style="display:grid;grid-template-columns:1fr 300px;gap:48px;margin-top:24px;align-items:start">
+      <article>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <span class="pill" style={`background:${accent};color:#fff`}>{data.theme.toUpperCase()}</span>
+          {data.place && <a href={`/destinations/${placeSlug(data.place)}`}><span class="pill" style="background:var(--azure-tint);color:var(--azure)">{data.place.toUpperCase()}</span></a>}
+        </div>
+
+        <h1 style="font-weight:800;font-size:44px;line-height:1.05;letter-spacing:-0.03em;margin-top:16px;text-wrap:balance">{data.h1}</h1>
+
+        <div style="display:flex;align-items:center;gap:14px;margin-top:18px;color:var(--faint);font-size:14px;flex-wrap:wrap">
+          <div style="display:flex;align-items:center;gap:9px">
+            <div style="width:34px;height:34px;border-radius:50%;background:var(--deep);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;font-family:'Bricolage Grotesque'">M</div>
+            <span style="color:var(--ink);font-weight:600">{data.author}</span>
+          </div>
+          <span>•</span><span>Updated {fmt(data.updatedDate || data.pubDate)}</span>
+          {data.readTime && <><span>•</span><span>{data.readTime}</span></>}
+        </div>
+
+        {data.heroImage && (
+          <img src={data.heroImage} alt={data.heroAlt || data.h1} style="border-radius:20px;width:100%;max-height:460px;object-fit:cover;margin-top:24px" />
+        )}
+
+        <AffiliateDisclosure />
+
+        {data.stay22Embed && <Stay22Map embed={data.stay22Embed} label={`Where to stay in ${data.place}`} />}
+
+        <div class="prose" style="margin-top:26px">
+          <Content />
+        </div>
+
+        {data.tags.length > 0 && (
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:28px;padding-top:24px;border-top:1px solid var(--line)">
+            {data.tags.map((t) => (
+              <span style="font-size:13px;background:oklch(0.96 0.006 85);border:1px solid var(--line);padding:6px 13px;border-radius:999px;color:var(--soft)">#{t}</span>
+            ))}
+          </div>
+        )}
+      </article>
+
+      <aside class="hide-mobile" style="position:sticky;top:90px;display:flex;flex-direction:column;gap:18px">
+        {toc.length > 1 && (
+          <div style="border:1px solid var(--line);border-radius:16px;background:var(--card);padding:18px 20px">
+            <div style="font-family:monospace;font-size:11px;color:var(--faint);letter-spacing:0.06em;margin-bottom:12px">IN THIS GUIDE</div>
+            {toc.map((h) => (
+              <a href={`#${h.slug}`} style="display:block;font-size:14px;color:var(--soft);padding:6px 0 6px 12px;border-left:2px solid var(--line)">{h.text}</a>
+            ))}
+          </div>
+        )}
+        {data.stay22Embed && (
+          <div style="border:1px solid var(--line);border-radius:16px;background:var(--deep);padding:20px;color:#fff">
+            <div style="font-family:'Bricolage Grotesque';font-weight:700;font-size:17px">Book your {data.place} stay</div>
+            <p style="font-size:13px;color:#ffffffbb;margin-top:6px">Live prices on an interactive map.</p>
+            <a href={data.stay22Embed} target="_blank" rel="sponsored nofollow noopener" style="display:block;text-align:center;background:var(--coral);color:#fff;font-weight:700;font-size:14px;padding:12px;border-radius:10px;margin-top:14px">Open the map →</a>
+            <p style="font-size:10.5px;color:#ffffff77;margin-top:9px;text-align:center">Affiliate · we may earn a commission</p>
+          </div>
+        )}
+      </aside>
+    </div>
+
+    <!-- Author box -->
+    <section style="margin-top:36px">
+      <div class="card" style="border-radius:20px;padding:26px 30px;display:flex;gap:20px;align-items:center;flex-wrap:wrap">
+        <div style="width:60px;height:60px;border-radius:50%;background:var(--deep);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque';font-weight:800;font-size:22px;flex-shrink:0">M</div>
+        <div style="flex:1;min-width:240px">
+          <div style="font-family:'Bricolage Grotesque';font-weight:700;font-size:17px">About the author — Max</div>
+          <p style="font-size:14px;color:var(--soft);margin-top:5px;text-wrap:pretty">I'm local to the Côte d'Azur and I write from first-hand experience. I visit every place I recommend and I never accept payment for reviews. Questions? <a href="/about#contact" style="color:var(--coral-deep);font-weight:600">Get in touch</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    {related.length > 0 && (
+      <section style="padding:56px 0 0;margin-top:20px;border-top:1px solid var(--line)">
+        <h2 style="font-weight:700;font-size:26px;letter-spacing:-0.02em;margin-bottom:20px">Keep reading</h2>
+        <div class="grid-3">{related.map((p) => <PostCard post={p} />)}</div>
+      </section>
+    )}
+  </main>
+  <Newsletter />
+</BaseLayout>

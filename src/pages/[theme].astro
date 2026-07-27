@@ -1,0 +1,52 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import Newsletter from '../components/Newsletter.astro';
+import { SITE, THEME_META, THEME_COLOR, placeSlug } from '../lib/site.js';
+
+export async function getStaticPaths() {
+  return [
+    { params: { theme: 'hotels' }, props: { name: 'Hotels' } },
+    { params: { theme: 'activities' }, props: { name: 'Activities' } },
+    { params: { theme: 'events' }, props: { name: 'Events' } },
+    { params: { theme: 'hidden-gems' }, props: { name: 'Hidden Gems' } },
+    { params: { theme: 'tips' }, props: { name: 'Tips' } },
+  ];
+}
+
+const { name } = Astro.props;
+const meta = THEME_META[name];
+const accent = THEME_COLOR[name];
+
+const posts = (await getCollection('posts', (p) => !p.data.draft))
+  .filter((p) => p.data.theme === name || p.data.categories.includes(name))
+  .sort((a, b) => +b.data.pubDate - +a.data.pubDate);
+
+const title = `French Riviera Tips | ${meta.title} on the Côte d'Azur | French Riviera`;
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: meta.title,
+  description: meta.blurb,
+  url: new URL(Astro.url.pathname, SITE.url).href,
+};
+---
+<BaseLayout title={title} description={meta.blurb} jsonld={jsonld}>
+  <main class="wrap" style="padding-top:40px">
+    <nav style="font-size:13px;color:var(--faint);display:flex;gap:8px"><a href="/">Home</a><span>/</span><span>{meta.title}</span></nav>
+    <div style="margin-top:18px;max-width:640px">
+      <span class="pill" style={`background:${accent};color:#fff`}>{name.toUpperCase()}</span>
+      <h1 style="font-weight:800;font-size:42px;letter-spacing:-0.03em;margin-top:14px;text-wrap:balance">{meta.title}</h1>
+      <p style="color:var(--soft);font-size:16.5px;margin-top:8px;text-wrap:pretty">{meta.blurb}</p>
+    </div>
+    <div style="margin-top:34px">
+      {posts.length > 0 ? (
+        <div class="grid-3">{posts.map((p) => <PostCard post={p} />)}</div>
+      ) : (
+        <p style="color:var(--soft);font-size:16px;padding:40px 0">New guides coming soon. <a href="/" style="color:var(--coral-deep);font-weight:600">Back home →</a></p>
+      )}
+    </div>
+  </main>
+  <Newsletter />
+</BaseLayout>

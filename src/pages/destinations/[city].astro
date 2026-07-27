@@ -1,0 +1,52 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import Newsletter from '../../components/Newsletter.astro';
+import { SITE, ALL_PLACES, placeSlug } from '../../lib/site.js';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts', (p) => !p.data.draft);
+  // Union of curated places and any place that appears on a post.
+  const placeSet = new Map();
+  for (const name of ALL_PLACES) placeSet.set(placeSlug(name), name);
+  for (const p of posts) placeSet.set(placeSlug(p.data.place), p.data.place);
+  return [...placeSet.entries()].map(([slug, name]) => ({
+    params: { city: slug },
+    props: { name, posts },
+  }));
+}
+
+const { name, posts } = Astro.props;
+const cityPosts = posts
+  .filter((p) => placeSlug(p.data.place) === placeSlug(name) || p.data.categories.includes(name))
+  .sort((a, b) => +b.data.pubDate - +a.data.pubDate);
+
+const title = `French Riviera Tips | ${name} Travel Guide, Hotels & Tips | ${name}`;
+const blurb = `Local guides to ${name} on the French Riviera — where to stay, what to see, and the tips only locals know.`;
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: `${name} — French Riviera Tips`,
+  description: blurb,
+  url: new URL(Astro.url.pathname, SITE.url).href,
+};
+---
+<BaseLayout title={title} description={blurb} jsonld={jsonld}>
+  <main class="wrap" style="padding-top:40px">
+    <nav style="font-size:13px;color:var(--faint);display:flex;gap:8px;flex-wrap:wrap"><a href="/">Home</a><span>/</span><a href="/destinations" style="color:var(--coral-deep);font-weight:600">Destinations</a><span>/</span><span>{name}</span></nav>
+    <div style="margin-top:18px;max-width:660px">
+      <span class="pill" style="background:var(--azure);color:#fff">{name.toUpperCase()}</span>
+      <h1 style="font-weight:800;font-size:42px;letter-spacing:-0.03em;margin-top:14px;text-wrap:balance">{name}</h1>
+      <p style="color:var(--soft);font-size:16.5px;margin-top:8px;text-wrap:pretty">{blurb}</p>
+    </div>
+    <div style="margin-top:34px">
+      {cityPosts.length > 0 ? (
+        <div class="grid-3">{cityPosts.map((p) => <PostCard post={p} />)}</div>
+      ) : (
+        <p style="color:var(--soft);font-size:16px;padding:40px 0">Guides for {name} are on the way. In the meantime, <a href="/destinations" style="color:var(--coral-deep);font-weight:600">browse all destinations →</a></p>
+      )}
+    </div>
+  </main>
+  <Newsletter />
+</BaseLayout>

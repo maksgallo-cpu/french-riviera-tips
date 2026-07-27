@@ -1,0 +1,116 @@
+/* French Riviera Tips — design tokens + global styles.
+   Lifted from the approved design (French Riviera Tips.dc.html). */
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap');
+
+:root {
+  --ink: oklch(0.24 0.03 255);
+  --soft: oklch(0.50 0.02 255);
+  --faint: oklch(0.64 0.015 255);
+  --line: oklch(0.92 0.008 255);
+  --paper: oklch(0.98 0.006 85);
+  --card: #ffffff;
+  --coral: oklch(0.66 0.18 42);
+  --coral-deep: oklch(0.55 0.17 40);
+  --coral-tint: oklch(0.96 0.035 45);
+  --azure: oklch(0.64 0.12 232);
+  --azure-tint: oklch(0.96 0.03 232);
+  --amber: oklch(0.80 0.14 78);
+  --deep: oklch(0.36 0.062 244);
+  /* Sun-reflection disc used behind the FRT monogram */
+  --sun:
+    linear-gradient(rgba(255,255,255,0.55),rgba(255,255,255,0.55)) center 72% / 90% 1.8px no-repeat,
+    linear-gradient(rgba(255,255,255,0.70),rgba(255,255,255,0.70)) center 81% / 82% 1.4px no-repeat,
+    linear-gradient(rgba(255,255,255,0.85),rgba(255,255,255,0.85)) center 90% / 68% 1px no-repeat,
+    linear-gradient(180deg,#f6a13a 0%,#ec6f2c 55%,#d9532a 100%);
+  --wrap: 1240px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Instrument Sans', system-ui, sans-serif;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+a { text-decoration: none; color: inherit; }
+a:hover { color: var(--coral-deep); }
+img { max-width: 100%; display: block; }
+input, button { font-family: inherit; }
+input::placeholder { color: oklch(0.60 0.02 255); }
+::selection { background: oklch(0.90 0.06 42); }
+h1, h2, h3, h4 { font-family: 'Bricolage Grotesque', sans-serif; }
+
+.wrap { max-width: var(--wrap); margin: 0 auto; padding-left: 32px; padding-right: 32px; }
+
+/* Brand mark */
+.frt-disc {
+  border-radius: 50%; background: var(--sun);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800;
+  letter-spacing: -0.03em; flex-shrink: 0;
+}
+
+/* Buttons */
+.btn-coral {
+  border: none; cursor: pointer; background: var(--coral); color: #fff;
+  font-weight: 700; font-size: 15px; padding: 14px 26px; border-radius: 11px;
+  display: inline-block; text-align: center; transition: background .15s;
+}
+.btn-coral:hover { background: var(--coral-deep); color: #fff; }
+
+/* Pills / badges */
+.pill { display: inline-block; font-size: 11.5px; font-weight: 700; padding: 5px 12px;
+  border-radius: 999px; letter-spacing: 0.03em; }
+
+/* Cards */
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 18px; overflow: hidden;
+  transition: box-shadow .18s; }
+a.card:hover { box-shadow: 0 14px 34px oklch(0.24 0.03 255/0.10); }
+
+/* Placeholder image tile (until real Wix images are wired) */
+.ph { background: repeating-linear-gradient(135deg, oklch(0.90 0.03 42) 0 16px, oklch(0.93 0.03 42) 16px 32px); }
+
+/* ---------- Article prose ---------- */
+.prose { font-size: 17.5px; line-height: 1.72; color: oklch(0.30 0.02 255); }
+.prose > p { margin-bottom: 20px; text-wrap: pretty; }
+.prose h2 { font-weight: 700; font-size: 27px; letter-spacing: -0.02em; color: var(--ink);
+  margin: 38px 0 14px; scroll-margin-top: 96px; }
+.prose h3 { font-weight: 700; font-size: 21px; letter-spacing: -0.01em; color: var(--ink);
+  margin: 28px 0 10px; scroll-margin-top: 96px; }
+.prose strong { font-weight: 600; color: var(--ink); }
+.prose a { color: var(--coral-deep); font-weight: 600; }
+.prose a:hover { text-decoration: underline; }
+.prose ul, .prose ol { margin: 0 0 20px 22px; }
+.prose li { margin-bottom: 8px; }
+.prose img { border-radius: 16px; margin: 26px 0 8px; width: 100%; object-fit: cover; }
+/* Wix-style caption: an <em> paragraph right after an image */
+.prose img + em, .prose p > em:only-child {
+  display: block; font-size: 13px; color: var(--faint); font-style: italic;
+  text-align: center; margin-top: -2px; margin-bottom: 22px;
+}
+.prose blockquote { border-left: 3px solid var(--coral); padding: 4px 0 4px 20px;
+  margin: 24px 0; color: var(--soft); font-style: italic; }
+
+/* Header nav */
+.mega { position: absolute; top: 100%; left: -16px; margin-top: 10px; background: var(--card);
+  border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 20px 50px oklch(0.24 0.03 255/0.18);
+  padding: 22px; display: grid; grid-template-columns: repeat(4,150px) 200px; gap: 18px; z-index: 60;
+  opacity: 0; visibility: hidden; transform: translateY(-6px); transition: all .16s ease; }
+.has-mega:hover .mega { opacity: 1; visibility: visible; transform: translateY(0); }
+.mega-col-h { font-family: monospace; font-size: 10.5px; color: var(--faint);
+  letter-spacing: 0.08em; margin-bottom: 8px; }
+.mega a { display: block; padding: 6px 8px; border-radius: 8px; font-size: 13.5px; font-weight: 500; color: var(--ink); }
+.mega a:hover { background: var(--coral-tint); color: var(--coral-deep); }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .wrap { padding-left: 20px; padding-right: 20px; }
+  .grid-3 { grid-template-columns: 1fr !important; }
+  .grid-2 { grid-template-columns: 1fr !important; }
+  .article-grid { grid-template-columns: 1fr !important; }
+  .hide-mobile { display: none !important; }
+}
+.grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
