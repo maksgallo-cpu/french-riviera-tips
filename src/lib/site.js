@@ -40,6 +40,12 @@ export const PLACE_PHOTO = {
   'Èze': '/images/dest/eze.jpg',
   'Antibes': '/images/dest/antibes.jpg',
   'Saint-Paul-de-Vence': '/images/dest/saint-paul-de-vence.jpg',
+  'Villefranche-sur-Mer': '/images/secret-beach-la-darse-in-villefranche-sur-mer-c.jpg',
+  'Saint-Jean-Cap-Ferrat': '/images/parking-in-villefranche-sur-mer-cap-ferrat-the-ultimate-guide-to-free-and-cheap-spots-c.jpg',
+  'Biot': '/images/discover-biot-a-charming-medieval-village-in-the-alpes-maritimes-c.jpg',
+  'Théoule-sur-Mer': '/images/theoule-sur-mer-a-hidden-gem-of-the-french-riviera-c.jpg',
+  'Roquebrune-Cap-Martin': '/images/roquebrune-cap-martin-where-medieval-charm-meets-azure-splendor-c.jpg',
+  'Saint-Tropez': '/images/les-voiles-de-saint-tropez-2026-the-complete-visitor-s-guide.jpg',
 };
 
 // Slugify a place name to its /destinations/<slug> URL.

@@ -238,24 +238,11 @@ const title = "French Riviera Tips | Local Guide to the Côte d'Azur | Nice, Can
           <p style="font-size:15.5px;color:#ffffffcc;margin-top:12px;max-width:420px;text-wrap:pretty">Nice Côte d'Azur airport is the gateway to the coast. Compare fares from the US, UK and beyond and set a price alert before you book.</p>
           <p style="font-size:11.5px;color:#ffffff88;margin-top:14px">Powered by Travelpayouts · we may earn a commission on bookings</p>
         </div>
-        <div id="tp-flights" style="min-height:320px;background:#fff;margin:14px;border-radius:16px;overflow:auto;padding:14px"></div>
+        <div id="tp-flights" style="min-height:320px;background:#fff;margin:14px;border-radius:16px;overflow:auto;padding:14px">
+          <script is:inline async charset="utf-8" src={`https://tp.media/content?currency=usd&trs=404739&shmarker=${AFFILIATE.travelpayoutsMarker}&show_hotels=false&powered_by=true&locale=en&searchUrl=www.aviasales.com%2Fsearch&primary_override=%23ff5a3c&color_button=%23ff5a3c&color_icons=%23ff5a3c&secondary=%23FFFFFF&dark=%23262626&light=%23FFFFFF&special=%23C4C4C4&color_focused=%23ff5a3c&border_radius=12&plain=true&promo_id=7879&campaign_id=100`}></script>
+        </div>
       </div>
     </section>
-    <script is:inline define:vars={{ marker: AFFILIATE.travelpayoutsMarker }}>
-      (function () {
-        var el = document.getElementById('tp-flights');
-        if (!el) return;
-        var s = document.createElement('script');
-        s.async = true;
-        s.charset = 'utf-8';
-        s.src = 'https://tpwgts.com/content?currency=usd&trs=404739&shmarker=' + marker +
-          '&show_hotels=false&powered_by=true&locale=en&searchUrl=www.aviasales.com%2Fsearch' +
-          '&primary_override=%23ff5a3c&color_button=%23ff5a3c&color_icons=%23ff5a3c&secondary=%23FFFFFF' +
-          '&dark=%23262626&light=%23FFFFFF&special=%23C4C4C4&color_focused=%23ff5a3c&border_radius=12' +
-          '&plain=true&promo_id=7879&campaign_id=100';
-        el.appendChild(s);
-      })();
-    </script>
 
     <!-- FAQ -->
     <section style="max-width:960px;margin:0 auto;padding:56px 32px 0">
