@@ -112,6 +112,19 @@ a.card:hover { box-shadow: 0 14px 34px oklch(0.24 0.03 255/0.10); }
   .grid-2 { grid-template-columns: 1fr !important; }
   .article-grid { grid-template-columns: 1fr !important; }
   .hide-mobile { display: none !important; }
+  .mobile-only { display: flex !important; }
+}
+@media (min-width: 901px) {
+  .mobile-only { display: none !important; }
+}
+/* Fluid headings so nothing overflows on phones */
+@media (max-width: 640px) {
+  .wrap { padding-left: 16px; padding-right: 16px; }
+  h1 { font-size: clamp(30px, 8.5vw, 44px) !important; }
+  h2 { font-size: clamp(23px, 6.4vw, 30px) !important; }
+  .prose { font-size: 16.5px; }
+  .prose h2 { font-size: 22px; }
+  .prose h3 { font-size: 18.5px; }
 }
 .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }

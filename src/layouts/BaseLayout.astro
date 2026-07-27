@@ -29,12 +29,20 @@ const schemas = Array.isArray(jsonld) ? jsonld.filter(Boolean) : [jsonld];
   <link rel="canonical" href={canonicalURL} />
   {noindex && <meta name="robots" content="noindex, nofollow" />}
 
+  <!-- Geographic targeting (GEO) — French Riviera / Alpes-Maritimes -->
+  <meta name="geo.region" content="FR-06" />
+  <meta name="geo.placename" content="French Riviera, Côte d'Azur" />
+  <meta name="geo.position" content="43.7009;7.2683" />
+  <meta name="ICBM" content="43.7009, 7.2683" />
+  <meta name="language" content="en" />
+
   <!-- Open Graph -->
   <meta property="og:type" content={type} />
   <meta property="og:site_name" content={SITE.name} />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:url" content={canonicalURL} />
+  <meta property="og:locale" content="en_US" />
   {ogImage && <meta property="og:image" content={ogImage} />}
 
   <!-- Twitter -->

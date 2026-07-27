@@ -41,7 +41,16 @@ const jsonld = [
     image: data.heroImage ? [data.heroImage] : undefined,
     datePublished: new Date(data.pubDate).toISOString(),
     dateModified: new Date(data.updatedDate || data.pubDate).toISOString(),
-    author: { '@type': 'Person', name: data.author || SITE.author },
+    author: {
+      '@type': 'Person',
+      name: data.author || SITE.author,
+      description: "Local Côte d'Azur travel writer covering the French Riviera from first-hand experience.",
+      knowsAbout: ['French Riviera', "Côte d'Azur", data.place].filter(Boolean),
+    },
+    about: { '@type': 'Place', name: `${data.place}, French Riviera, France` },
+    speakable: { '@type': 'SpeakableSpecification', cssSelector: ['h1', '.prose > p'] },
+    inLanguage: 'en',
+    isAccessibleForFree: true,
     publisher: {
       '@type': 'Organization',
       name: SITE.name,

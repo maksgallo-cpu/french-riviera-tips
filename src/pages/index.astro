@@ -61,6 +61,12 @@ const jsonld = [
     name: SITE.name,
     url: SITE.url,
     logo: new URL('/favicon.svg', SITE.url).href,
+    areaServed: {
+      '@type': 'Place',
+      name: "French Riviera (Côte d'Azur), Alpes-Maritimes, France",
+      geo: { '@type': 'GeoCoordinates', latitude: 43.7009, longitude: 7.2683 },
+    },
+    knowsAbout: ['French Riviera', "Côte d'Azur", 'Nice', 'Cannes', 'Monaco', 'Antibes', 'travel guides', 'hotels', 'beaches'],
   },
   {
     '@context': 'https://schema.org',
