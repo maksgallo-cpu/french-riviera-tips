@@ -7,7 +7,7 @@ updatedDate: 2026-01-02
 theme: "Destinations"
 place: "Roquebrune-Cap-Martin"
 categories: ["Roquebrune-Cap-Martin", "Destinations", "Hotels", "Hidden Gems"]
-heroImage: "https://static.wixstatic.com/media/a1c2e8_90012b6dbafc4fe4ad6e657269fcbec7~mv2.png/v1/fill/w_1600,h_1200,al_c/a1c2e8_90012b6dbafc4fe4ad6e657269fcbec7~mv2.png"
+heroImage: "/images/roquebrune-cap-martin-where-medieval-charm-meets-azure-splendor-c.jpg"
 heroAlt: "View of Roquebrune-Cap-Martin from the top of the hill"
 readTime: "3 min read"
 author: "Max"
@@ -18,7 +18,7 @@ draft: false
 
 Perched on the dramatic cliffs where the French Riviera's landscape becomes increasingly rugged and wild, Roquebrune-Cap-Martin is a destination that captures the essence of the Côte d'Azur without the overwhelming crowds of its more famous neighbors. This enchanting village seamlessly blends its storied medieval past with the relaxed elegance of a seaside escape, offering visitors an authentic slice of French Riviera life that feels both timeless and utterly contemporary.
 
-![View of Roquebrune-Cap-Martin - picture courtesy of Wikipedia](https://static.wixstatic.com/media/a1c2e8_90012b6dbafc4fe4ad6e657269fcbec7~mv2.png/v1/fill/w_1024,h_768,al_c/a1c2e8_90012b6dbafc4fe4ad6e657269fcbec7~mv2.png)
+![View of Roquebrune-Cap-Martin - picture courtesy of Wikipedia](/images/body/roquebrune-cap-martin-where-medieval-charm-meets-azure-splendor-1-c.jpg)
 *View of Roquebrune-Cap-Martin*
 
 <!-- STAY22 MAP EMBED: https://www.stay22.com/embed/69582755c5b966bace3f445b -->

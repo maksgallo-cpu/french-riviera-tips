@@ -7,7 +7,7 @@ updatedDate: 2025-12-29
 theme: "Hidden Gems"
 place: "Théoule-sur-Mer"
 categories: ["Théoule-sur-Mer", "Destinations", "Hotels", "Hidden Gems"]
-heroImage: "https://static.wixstatic.com/media/a1c2e8_ab9e461c9c7a42ce844f53fe91a8ae69~mv2.jpg/v1/fill/w_1500,h_1125,al_c/a1c2e8_ab9e461c9c7a42ce844f53fe91a8ae69~mv2.jpg"
+heroImage: "/images/theoule-sur-mer-a-hidden-gem-of-the-french-riviera-c.jpg"
 heroAlt: "View of Théoule-Sur-Mer"
 readTime: "5 min read"
 author: "Max"
@@ -16,7 +16,7 @@ tags: ["french riviera", "French Riviera Hidden Gems", "French Riviera Secret Sp
 draft: false
 ---
 
-![Théoule-Sur-Mer - Picture courtesy of Wikipedia](https://static.wixstatic.com/media/a1c2e8_ab9e461c9c7a42ce844f53fe91a8ae69~mv2.jpg/v1/fill/w_1024,h_768,al_c/a1c2e8_ab9e461c9c7a42ce844f53fe91a8ae69~mv2.jpg)
+![Théoule-Sur-Mer - Picture courtesy of Wikipedia](/images/body/theoule-sur-mer-a-hidden-gem-of-the-french-riviera-1-c.jpg)
 *Théoule-Sur-Mer - Picture courtesy of Wikipedia*
 
 <!-- STAY22 MAP EMBED: https://www.stay22.com/embed/6952e056581ec595fcb6e6f6 -->

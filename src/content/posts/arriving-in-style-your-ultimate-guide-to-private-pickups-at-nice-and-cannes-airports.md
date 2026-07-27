@@ -7,7 +7,7 @@ updatedDate: 2026-01-07
 theme: "Tips"
 place: "Côte d'Azur"
 categories: ["Tips", "Nice", "Cannes"]
-heroImage: "https://static.wixstatic.com/media/a1c2e8_93b32aeca8a945528747747b26146105~mv2.png/v1/fill/w_1000,h_750,al_c/a1c2e8_93b32aeca8a945528747747b26146105~mv2.png"
+heroImage: "/images/arriving-in-style-your-ultimate-guide-to-private-pickups-at-nice-and-cannes-airports-c.jpg"
 heroAlt: "Nice Airport Terminal 1, view of the landing track"
 readTime: "4 min read"
 author: "Max"
@@ -16,7 +16,7 @@ tags: ["hotel transfert", "Nice airport", "Cannes airport", "airport pickup", "w
 draft: false
 ---
 
-![Nice Airport Terminal 1](https://static.wixstatic.com/media/a1c2e8_93b32aeca8a945528747747b26146105~mv2.png/v1/fill/w_1000,h_750,al_c/a1c2e8_93b32aeca8a945528747747b26146105~mv2.png)
+![Nice Airport Terminal 1](/images/body/arriving-in-style-your-ultimate-guide-to-private-pickups-at-nice-and-cannes-airports-1-c.jpg)
 *Nice Airport Terminal 1*
 
 The moment your plane descends over the shimmering turquoise waters of the Baie des Anges, you know you've arrived. But as any seasoned traveler to the Côte d'Azur will tell you, the transition from the arrivals hall to your hotel in Monaco, Saint-Tropez, or the Croisette is where your vacation truly begins.

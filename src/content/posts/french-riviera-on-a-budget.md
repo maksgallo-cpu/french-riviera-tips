@@ -8,7 +8,7 @@ updatedDate: 2025-12-29
 theme: "Tips"
 place: "French Riviera"
 categories: ["Tips", "Destinations", "Hotels"]
-heroImage: "https://static.wixstatic.com/media/a1c2e8_5adf72ec416641d39663e721a0cc8ff0~mv2.png/v1/fill/w_2500,h_1144,al_c/a1c2e8_5adf72ec416641d39663e721a0cc8ff0~mv2.png"
+heroImage: "/images/french-riviera-on-a-budget-c.jpg"
 heroAlt: "French Riviera Tips - Your Travel Blog born from personal experience"
 readTime: "2 min read"
 author: "Max"
@@ -18,7 +18,7 @@ draft: false
 
 ### Born from Personal Experience
 
-![French Riviera Tips Home Page Hero view](https://static.wixstatic.com/media/a1c2e8_5adf72ec416641d39663e721a0cc8ff0~mv2.png/v1/fill/w_1024,h_468,al_c/a1c2e8_5adf72ec416641d39663e721a0cc8ff0~mv2.png)
+![French Riviera Tips Home Page Hero view](/images/body/french-riviera-on-a-budget-1-c.jpg)
 *French Riviera Tips - Your Travel Blog born from personal experience*
 
 **Why French Riviera Tips?** I created French Riviera Tips after living in Nice since 2020 and witnessing a recurring pattern: every year, more than 5 million people visit the French Riviera, drawn by its legendary beauty and glamorous reputation. The region is famous (or perhaps infamous) for being expensive, with destinations like [Monaco](https://www.tripadvisor.co.uk/Tourism-g190405-Monaco-Vacations.html), [Saint-Tropez](https://www.tripadvisor.co.uk/Tourism-g187242-Saint_Tropez_French_Riviera_Cote_d_Azur_Provence_Alpes_Cote_d_Azur-Vacations.html), and [Èze](https://www.tripadvisor.co.uk/Tourism-g187222-Eze_French_Riviera_Cote_d_Azur_Provence_Alpes_Cote_d_Azur-Vacations.html) commanding premium prices that can quickly drain travel budgets.

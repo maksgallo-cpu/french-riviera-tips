@@ -7,7 +7,7 @@ updatedDate: 2026-07-05
 theme: "Events"
 place: "Cannes"
 categories: ["Events", "Destinations", "Activities", "Cannes"]
-heroImage: "https://static.wixstatic.com/media/a1c2e8_5adf72ec416641d39663e721a0cc8ff0~mv2.png/v1/fill/w_2500,h_1144,al_c/a1c2e8_5adf72ec416641d39663e721a0cc8ff0~mv2.png"
+heroImage: "/images/les-plage-electroniques-2026-ultimate-guide-c.jpg"
 heroAlt: "Les Plages Électroniques beach festival in Cannes"
 readTime: "9 min read"
 author: "Max"
@@ -15,7 +15,7 @@ tags: ["Les Plages Électroniques 2026 Cannes", "Beach Festival Cannes", "Beach 
 draft: false
 ---
 
-![Best Beach Festival in France: Les Plages Électroniques in Cannes - Courtesy of JDS.fr](https://static.wixstatic.com/media/a1c2e8_e6d5f914db56447c999d412f9d2d6b83~mv2.webp/v1/fill/w_1024,h_1024,al_c/a1c2e8_e6d5f914db56447c999d412f9d2d6b83~mv2.webp)
+![Best Beach Festival in France: Les Plages Électroniques in Cannes - Courtesy of JDS.fr](/images/body/les-plage-electroniques-2026-ultimate-guide-1.webp)
 *Courtesy of JDS.fr*
 
 Every August, the golden sand in front of the Palais des Festivals in Cannes stops being a postcard backdrop and turns into one of the wildest dancefloors in Europe. Les Plages Électroniques, France's biggest beach party, transforms the Croisette into an open-air arena where sunset cocktails give way to fifteen hours of non-stop electronic music, feet in the sand, eyes on the Mediterranean horizon. Whether you are a first-timer wondering what all the fuss is about or a returning festival-goer planning your twentieth summer on that beach, this guide covers everything you need: the story behind the festival, the 2026 lineup, ticket prices, how to actually get to Cannes, and a carefully curated list of hotels for every budget.

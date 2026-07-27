@@ -7,7 +7,7 @@ updatedDate: 2026-04-06
 theme: "Events"
 place: "Saint-Tropez"
 categories: ["Events", "Destinations", "Hotels", "Saint-Tropez"]
-heroImage: "https://static.wixstatic.com/media/a1c2e8_7ef9c741d7194959ba8c64ef627b7c8f~mv2.jpg/v1/fill/w_2175,h_919,al_c/a1c2e8_7ef9c741d7194959ba8c64ef627b7c8f~mv2.jpg"
+heroImage: "/images/les-voiles-de-saint-tropez-2026-the-complete-visitor-s-guide.jpg"
 heroAlt: "Les Voiles de Saint-Tropez regatta"
 readTime: "10 min read"
 author: "Max"
@@ -15,7 +15,7 @@ tags: ["Regatta Les Voiles de Saint-Tropez", "Sailing boats", "Les Voiles de Sai
 draft: false
 ---
 
-![Les Voiles de Saint-Tropez - picture courtesy of Charter World](https://static.wixstatic.com/media/a1c2e8_7ef9c741d7194959ba8c64ef627b7c8f~mv2.jpg/v1/fill/w_1024,h_433,al_c/a1c2e8_7ef9c741d7194959ba8c64ef627b7c8f~mv2.jpg)
+![Les Voiles de Saint-Tropez - picture courtesy of Charter World](/images/body/les-voiles-de-saint-tropez-2026-the-complete-visitor-s-guide-1.jpg)
 *Les Voiles de Saint-Tropez (picture courtesy of Charter World)*
 
 **Event: 26 September – 4 October 2026 · Saint-Tropez, Var, French Riviera**

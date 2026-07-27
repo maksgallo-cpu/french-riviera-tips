@@ -8,7 +8,7 @@ updatedDate: 2026-01-01
 theme: "Hotels"
 place: "Nice"
 categories: ["Hotels", "Nice", "Hidden Gems"]
-heroImage: "https://static.wixstatic.com/media/a1c2e8_100a301172a548329a8f0348cbe4f048~mv2.jpg/v1/fill/w_1024,h_683,al_c/a1c2e8_100a301172a548329a8f0348cbe4f048~mv2.jpg"
+heroImage: "/images/best-hotels-near-nice-port-top-3-accommodation-picks.jpg"
 heroAlt: "Hotel bedroom hotel in Nice French Riviera"
 readTime: "3 min read"
 author: "Max"

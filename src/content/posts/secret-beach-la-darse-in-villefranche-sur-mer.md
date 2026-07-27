@@ -7,7 +7,7 @@ updatedDate: 2026-01-13
 theme: "Hidden Gems"
 place: "Villefranche-sur-Mer"
 categories: ["Villefranche-sur-Mer", "Destinations", "Hidden Gems", "Restaurants"]
-heroImage: "https://static.wixstatic.com/media/a1c2e8_4af4489e4be24d31baeca65d1f1e469d~mv2.jpg/v1/fill/w_2500,h_1875,al_c/a1c2e8_4af4489e4be24d31baeca65d1f1e469d~mv2.jpg"
+heroImage: "/images/secret-beach-la-darse-in-villefranche-sur-mer-c.jpg"
 heroAlt: "La Darse - Villefranche Sur Mer"
 readTime: "6 min read"
 author: "Max"
@@ -26,7 +26,7 @@ La Darse is Villefranche's historic dockyard and the soul of the town's working 
 
 This is a place that hasn't been sanitized for tourism. The boats are real working vessels, the fishermen are genuine, and the harbor functions as it has for centuries. Walking along La Darse, you're not stepping into a theme park recreation of Mediterranean life (you're witnessing the real thing).
 
-![Secret Beach of La Darse - picture taken on the 31st of December 2025](https://static.wixstatic.com/media/a1c2e8_e713d4756011484ab1774531da930473~mv2.jpeg/v1/fill/w_1024,h_768,al_c/a1c2e8_e713d4756011484ab1774531da930473~mv2.jpeg)
+![Secret Beach of La Darse - picture taken on the 31st of December 2025](/images/body/secret-beach-la-darse-in-villefranche-sur-mer-1.jpeg)
 *Secret Beach of La Darse - picture taken on the 31st of December 2025*
 
 <!-- VIDEO: https://video.wixstatic.com/video/a1c2e8_7263a1ceedfa442296bb542039599e13/480p/mp4/file.mp4 — "La Darse Secret Beach and its City Walls" -->

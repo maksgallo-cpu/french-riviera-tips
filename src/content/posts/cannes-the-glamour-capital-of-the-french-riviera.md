@@ -7,7 +7,7 @@ updatedDate: 2026-01-03
 theme: "Destinations"
 place: "Cannes"
 categories: ["Cannes", "Destinations", "Hotels"]
-heroImage: "https://static.wixstatic.com/media/a1c2e8_d8a5b152b72a49e1ac8f20e4fa297c1c~mv2.jpg/v1/fill/w_2500,h_1207,al_c/a1c2e8_d8a5b152b72a49e1ac8f20e4fa297c1c~mv2.jpg"
+heroImage: "/images/cannes-the-glamour-capital-of-the-french-riviera-c.jpg"
 heroAlt: "View of Cannes - French Riviera"
 readTime: "6 min read"
 author: "Max"
@@ -16,7 +16,7 @@ tags: ["french riviera tips", "best hotels in cote d azur", "5 star hotels frenc
 draft: false
 ---
 
-![View of Cannes - French Riviera](https://static.wixstatic.com/media/a1c2e8_d8a5b152b72a49e1ac8f20e4fa297c1c~mv2.jpg/v1/fill/w_1024,h_494,al_c/a1c2e8_d8a5b152b72a49e1ac8f20e4fa297c1c~mv2.jpg)
+![View of Cannes - French Riviera](/images/body/cannes-the-glamour-capital-of-the-french-riviera-1-c.jpg)
 *View of Cannes - French Riviera*
 
 <!-- STAY22 MAP EMBED: https://www.stay22.com/embed/69594cb9997f9b5d98aa6e88 -->

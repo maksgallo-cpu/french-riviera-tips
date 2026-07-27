@@ -7,7 +7,7 @@ updatedDate: 2026-01-04
 theme: "Destinations"
 place: "Nice"
 categories: ["Nice", "Destinations", "Hidden Gems", "Restaurants"]
-heroImage: "https://static.wixstatic.com/media/a1c2e8_9643c3436875455493cd67a7a68039b8~mv2.jpg/v1/fill/w_1600,h_945,al_c/a1c2e8_9643c3436875455493cd67a7a68039b8~mv2.jpg"
+heroImage: "/images/nice-vieux-port-a-real-village.jpg"
 heroAlt: "Tramway crossing the Place Garibaldi in Nice, France"
 readTime: "5 min read"
 author: "Max"
@@ -20,7 +20,7 @@ There are dozens of places in the Vieux Port area. The information you will find
 
 Yes! Nice Vieux Port is a real village. When you wander through the charming streets of Nice's port area, you'll discover something that's increasingly rare in modern Mediterranean cities: a genuine village atmosphere. While the Promenade des Anglais bustles with tourists and commercial chains, the port remains a tight-knit community where locals gather, shopkeepers remember your name, and family-run businesses thrive alongside genuine community spaces. This is Nice at its most authentic.
 
-![Place Garibaldi Nice - Courtesy of Wikimedia](https://static.wixstatic.com/media/a1c2e8_9643c3436875455493cd67a7a68039b8~mv2.jpg/v1/fill/w_1024,h_605,al_c/a1c2e8_9643c3436875455493cd67a7a68039b8~mv2.jpg)
+![Place Garibaldi Nice - Courtesy of Wikimedia](/images/body/nice-vieux-port-a-real-village-1.jpg)
 *Place Garibaldi Nice - Courtesy of Wikimedia*
 
 <!-- STAY22 MAP EMBED: https://www.stay22.com/embed/6952e10e30df42e10d3b73fa -->

@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostCard from '../../components/PostCard.astro';
 import Newsletter from '../../components/Newsletter.astro';
-import { SITE, DEST_ZONES, placeSlug } from '../../lib/site.js';
+import { SITE, DEST_ZONES, placeSlug, PLACE_PHOTO } from '../../lib/site.js';
 
 const posts = (await getCollection('posts', (p) => !p.data.draft)).sort(
   (a, b) => +b.data.pubDate - +a.data.pubDate
@@ -37,8 +37,12 @@ const blurb = "Every town and village worth your time on the French Riviera — 
             const slug = placeSlug(place);
             const n = counts[place] || 0;
             const h = hues[place] ?? 232;
+            const photo = PLACE_PHOTO[place];
+            const bg = photo
+              ? `#0b2b3f url(${photo}) center/cover no-repeat`
+              : `repeating-linear-gradient(135deg,oklch(0.86 0.04 ${h}) 0 14px,oklch(0.89 0.04 ${h}) 14px 28px)`;
             return (
-              <a href={`/destinations/${slug}`} style={`display:block;border-radius:18px;overflow:hidden;position:relative;min-height:190px;background:repeating-linear-gradient(135deg,oklch(0.86 0.04 ${h}) 0 14px,oklch(0.89 0.04 ${h}) 14px 28px)`}>
+              <a href={`/destinations/${slug}`} style={`display:block;border-radius:18px;overflow:hidden;position:relative;min-height:190px;background:${bg}`}>
                 <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent,oklch(0.24 0.03 255/0.6));display:flex;flex-direction:column;justify-content:flex-end;padding:20px">
                   <span style="color:#fff;font-family:'Bricolage Grotesque';font-weight:700;font-size:22px">{place}</span>
                   <span style="color:#ffffffcc;font-size:12.5px;margin-top:2px">{n > 0 ? `${n} guide${n > 1 ? 's' : ''}` : 'Guides coming soon'}</span>

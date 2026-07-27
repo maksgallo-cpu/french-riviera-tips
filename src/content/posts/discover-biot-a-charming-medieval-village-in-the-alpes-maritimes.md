@@ -7,7 +7,7 @@ updatedDate: 2026-01-13
 theme: "Destinations"
 place: "Biot"
 categories: ["Biot", "Destinations", "Activities"]
-heroImage: "https://static.wixstatic.com/media/a1c2e8_0c64d6f5ea714af980357874a40f815f~mv2.png/v1/fill/w_1500,h_1125,al_c/a1c2e8_0c64d6f5ea714af980357874a40f815f~mv2.png"
+heroImage: "/images/discover-biot-a-charming-medieval-village-in-the-alpes-maritimes-c.jpg"
 heroAlt: "Glass-blowing artisan creating bubble glass at La Verrerie de Biot studio"
 readTime: "10 min read"
 author: "Max"
@@ -16,7 +16,7 @@ tags: ["Biot French Riviera", "Biot Côte d'Azur", "Medieval village Provence", 
 draft: false
 ---
 
-![Biot glass-blowing tradition](https://static.wixstatic.com/media/a1c2e8_0c64d6f5ea714af980357874a40f815f~mv2.png/v1/fill/w_1024,h_768,al_c/a1c2e8_0c64d6f5ea714af980357874a40f815f~mv2.png)
+![Biot glass-blowing tradition](/images/body/discover-biot-a-charming-medieval-village-in-the-alpes-maritimes-1-c.jpg)
 *Biot glass-blowing tradition*
 
 Imagine wandering through narrow, winding cobblestone streets where pastel-colored houses with weathered wooden shutters lean gently toward one another, as if sharing centuries-old secrets. Picture yourself pausing at a sun-dappled café terrace, sipping a cool glass of rosé while gazing across the Mediterranean landscape below. Welcome to Biot, a hidden gem nestled in the Alpes-Maritimes that captures the very essence of the French Riviera's gentle, artistic soul.

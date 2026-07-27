@@ -15,6 +15,7 @@ export async function GET() {
     '/hidden-gems',
     '/tips',
     '/about',
+    '/credits',
     '/affiliate-disclosure',
     '/privacy',
     '/cookies',

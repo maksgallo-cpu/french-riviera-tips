@@ -7,7 +7,7 @@ updatedDate: 2026-01-09
 theme: "Tips"
 place: "Côte d'Azur"
 categories: ["Tips", "Destinations", "Nice", "Monaco"]
-heroImage: "https://static.wixstatic.com/media/a1c2e8_75eca3374f19452daa3fac8186639903~mv2.jpg/v1/fill/w_1100,h_853,al_c/a1c2e8_75eca3374f19452daa3fac8186639903~mv2.jpg"
+heroImage: "/images/how-to-get-around-the-french-riviera-from-menton-to-saint-tropez.jpg"
 heroAlt: "TER Provence-Alpes-Côte d'Azur regional train"
 readTime: "3 min read"
 author: "Max"
@@ -15,7 +15,7 @@ tags: ["Public transportations on the French Riviera", "best travel tips for vis
 draft: false
 ---
 
-![TER Provence-Alpes-Côte d'Azur](https://static.wixstatic.com/media/a1c2e8_75eca3374f19452daa3fac8186639903~mv2.jpg/v1/fill/w_1024,h_794,al_c/a1c2e8_75eca3374f19452daa3fac8186639903~mv2.jpg)
+![TER Provence-Alpes-Côte d'Azur](/images/body/how-to-get-around-the-french-riviera-from-menton-to-saint-tropez-1.jpg)
 *TER Provence-Alpes-Côte d'Azur*
 
 ## Introduction

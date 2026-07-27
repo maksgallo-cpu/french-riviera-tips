@@ -11,6 +11,17 @@ export const SITE = {
   twitter: '',
 };
 
+// Affiliate identifiers — used across the whole site.
+export const AFFILIATE = {
+  // Stay22 "Allez" script ID: auto-monetizes every Booking/Expedia/Hotels.com/etc
+  // link on the site, tracked to your account. Installed in BaseLayout <head>.
+  stay22ScriptId: '69501e83581ec595fcb2c24d',
+  // Stay22 embed/map partner id (used in map iframes).
+  stay22Aid: 'frt25',
+  // Travelpayouts marker (flight & other TP widgets).
+  travelpayoutsMarker: '695055',
+};
+
 // Primary theme nav (order matters).
 export const THEMES = [
   { label: 'Hotels', href: '/hotels' },
@@ -20,6 +31,16 @@ export const THEMES = [
   { label: 'Tips', href: '/tips' },
   { label: 'About', href: '/about' },
 ];
+
+// Place → hosted photo (used on destination cards). Nice = owner photo; others Unsplash.
+export const PLACE_PHOTO = {
+  'Nice': '/images/nice-promenade.png',
+  'Cannes': '/images/dest/cannes.jpg',
+  'Monaco': '/images/dest/monaco.jpg',
+  'Èze': '/images/dest/eze.jpg',
+  'Antibes': '/images/dest/antibes.jpg',
+  'Saint-Paul-de-Vence': '/images/dest/saint-paul-de-vence.jpg',
+};
 
 // Slugify a place name to its /destinations/<slug> URL.
 export function placeSlug(name) {

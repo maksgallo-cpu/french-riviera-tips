@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { SITE } from '../lib/site.js';
+import { SITE, AFFILIATE } from '../lib/site.js';
 
 const {
   title,
@@ -51,6 +51,9 @@ const schemas = Array.isArray(jsonld) ? jsonld.filter(Boolean) : [jsonld];
   {schemas.map((s) => (
     <script type="application/ld+json" set:html={JSON.stringify(s)} />
   ))}
+
+  <!-- Stay22 Allez — auto-monetizes affiliate links (Booking, Expedia, Hotels.com…) site-wide -->
+  <script defer id="allez" data-id={AFFILIATE.stay22ScriptId} src="https://cdn.stay22.com/allez/allez.js"></script>
 </head>
 <body>
   <Header />

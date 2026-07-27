@@ -7,7 +7,7 @@ updatedDate: 2026-02-15
 theme: "Events"
 place: "Nice"
 categories: ["Events", "Activities", "Nice", "Tips"]
-heroImage: "https://static.wixstatic.com/media/a1c2e8_6e1e858ee9184689b80a77ded22a6a1d~mv2.jpg/v1/fill/w_800,h_1131,al_c/a1c2e8_6e1e858ee9184689b80a77ded22a6a1d~mv2.jpg"
+heroImage: "/images/nice-carnival-2026-vive-la-reine-complete-guide.jpg"
 heroAlt: "Nice Carnival 2026 official poster"
 readTime: "11 min read"
 author: "Max"
@@ -15,7 +15,7 @@ tags: ["Nice Carnival 2026 complete guide", "How to book a ticket at the Nice Ca
 draft: false
 ---
 
-![Nice Carnival 2026 official poster](https://static.wixstatic.com/media/a1c2e8_6e1e858ee9184689b80a77ded22a6a1d~mv2.jpg/v1/fill/w_800,h_1131,al_c/a1c2e8_6e1e858ee9184689b80a77ded22a6a1d~mv2.jpg)
+![Nice Carnival 2026 official poster](/images/body/nice-carnival-2026-vive-la-reine-complete-guide-1.jpg)
 *Nice Carnival 2026 complete guide*
 
 Get ready for one of Europe's most spectacular carnival celebrations! From February 11 to March 1, 2026, Nice transforms into a dazzling festival of colors, music, and unforgettable moments. This year's theme, "Long Live the Queen," promises a historic celebration honoring the great female heroines of history and fiction. Whether you're a first-time visitor or a seasoned carnival enthusiast, this comprehensive guide will help you plan the perfect carnival experience.

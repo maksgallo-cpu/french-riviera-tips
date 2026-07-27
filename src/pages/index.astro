@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PostCard from '../components/PostCard.astro';
 import Newsletter from '../components/Newsletter.astro';
-import { SITE, DEST_ZONES, placeSlug, THEME_COLOR } from '../lib/site.js';
+import { SITE, DEST_ZONES, placeSlug, THEME_COLOR, AFFILIATE, PLACE_PHOTO } from '../lib/site.js';
 
 const all = (await getCollection('posts', (p) => !p.data.draft)).sort(
   (a, b) => +b.data.pubDate - +a.data.pubDate
@@ -27,12 +27,12 @@ const themes = [
 ];
 
 const iconic = [
-  { name: 'Nice', d: 'Old Town, Promenade des Anglais, museums', h: 42 },
-  { name: 'Cannes', d: 'La Croisette, film festival, island escapes', h: 232 },
-  { name: 'Monaco', d: 'Casino Monte-Carlo, Grand Prix, palace', h: 325 },
-  { name: 'Èze', d: 'Cliffside village, gardens, panoramas', h: 150 },
-  { name: 'Antibes', d: "Picasso Museum, Cap d'Antibes, harbour", h: 85 },
-  { name: 'Saint-Paul-de-Vence', d: 'Art galleries, medieval streets', h: 20 },
+  { name: 'Nice', d: 'Old Town, Promenade des Anglais, museums' },
+  { name: 'Cannes', d: 'La Croisette, film festival, island escapes' },
+  { name: 'Monaco', d: 'Casino Monte-Carlo, Grand Prix, palace' },
+  { name: 'Èze', d: 'Cliffside village, gardens, panoramas' },
+  { name: 'Antibes', d: "Picasso Museum, Cap d'Antibes, harbour" },
+  { name: 'Saint-Paul-de-Vence', d: 'Art galleries, medieval streets' },
 ];
 
 const faqs = [
@@ -79,8 +79,8 @@ const title = "French Riviera Tips | Local Guide to the Côte d'Azur | Nice, Can
   <main id="top">
     <!-- HERO -->
     <section class="wrap" style="padding-top:36px">
-      <div style="position:relative;border-radius:26px;overflow:hidden;background:repeating-linear-gradient(135deg,oklch(0.72 0.09 232) 0 22px,oklch(0.70 0.10 232) 22px 44px);min-height:460px;display:flex;align-items:flex-end">
-        <div style="position:absolute;inset:0;background:linear-gradient(180deg,oklch(0.30 0.06 250/0.05) 0%,oklch(0.24 0.06 250/0.66) 100%)"></div>
+      <div role="img" aria-label="Nice promenade des anglais" style="position:relative;border-radius:26px;overflow:hidden;background:#0b2b3f url(/images/nice-promenade.png) center 40%/cover no-repeat;min-height:460px;display:flex;align-items:flex-end">
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,oklch(0.30 0.06 250/0.05) 0%,oklch(0.24 0.06 250/0.72) 100%)"></div>
         <div style="position:relative;padding:46px;color:#fff;max-width:740px">
           <div style="display:inline-flex;align-items:center;gap:7px;background:oklch(0.99 0.004 85/0.2);border:1px solid #ffffff55;padding:6px 13px;border-radius:999px;font-size:12.5px;font-weight:600;margin-bottom:18px;backdrop-filter:blur(4px)">✦ Local tips, updated for 2026</div>
           <h1 style="font-weight:800;font-size:54px;line-height:1.0;letter-spacing:-0.03em;text-wrap:balance">Your complete guide to the Côte d'Azur.</h1>
@@ -115,7 +115,7 @@ const title = "French Riviera Tips | Local Guide to the Côte d'Azur | Nice, Can
       <h2 style="font-weight:700;font-size:30px;letter-spacing:-0.02em;margin-bottom:20px">Iconic destinations</h2>
       <div class="grid-3">
         {iconic.map((c) => (
-          <a href={`/destinations/${placeSlug(c.name)}`} style={`display:block;border-radius:18px;overflow:hidden;position:relative;min-height:200px;background:repeating-linear-gradient(135deg,oklch(0.86 0.04 ${c.h}) 0 14px,oklch(0.89 0.04 ${c.h}) 14px 28px)`}>
+          <a href={`/destinations/${placeSlug(c.name)}`} style={`display:block;border-radius:18px;overflow:hidden;position:relative;min-height:200px;background:#0b2b3f url(${PLACE_PHOTO[c.name]}) center/cover no-repeat`}>
             <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent,oklch(0.24 0.03 255/0.6));display:flex;flex-direction:column;justify-content:flex-end;padding:22px">
               <span style="color:#fff;font-family:'Bricolage Grotesque';font-weight:700;font-size:24px">{c.name}</span>
               <span style="color:#ffffffcc;font-size:13px;margin-top:2px">{c.d}</span>
@@ -223,11 +223,39 @@ const title = "French Riviera Tips | Local Guide to the Côte d'Azur | Nice, Can
           <a href="/hotels" class="btn-coral" style="margin-top:22px">Where to stay →</a>
           <p style="font-size:11.5px;color:#ffffff88;margin-top:14px">Powered by Stay22 · we may earn a commission on bookings</p>
         </div>
-        <div style="position:relative;min-height:340px;background:repeating-linear-gradient(135deg,oklch(0.42 0.04 244) 0 20px,oklch(0.45 0.04 244) 20px 40px);display:flex;align-items:center;justify-content:center;margin:14px;border-radius:16px">
-          <div style="text-align:center;color:#fff"><div style="font-size:30px">📍</div><div style="font-family:monospace;font-size:12px;margin-top:8px;letter-spacing:0.03em">STAY22 INTERACTIVE MAP</div></div>
+        <div style="position:relative;min-height:340px;margin:14px;border-radius:16px;overflow:hidden">
+          <iframe src={`https://www.stay22.com/embed/gm?aid=${AFFILIATE.stay22Aid}&lat=43.6961&lng=7.2718&maincolor=ff5a3c&hidebrand=true&markerimage`} loading="lazy" title="Hotels on the French Riviera — live map" style="width:100%;height:100%;min-height:340px;border:0;display:block"></iframe>
         </div>
       </div>
     </section>
+
+    <!-- GETTING THERE / FLIGHTS -->
+    <section class="wrap" style="padding-top:20px">
+      <div style="background:oklch(0.30 0.05 235);border-radius:24px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr" class="grid-2">
+        <div style="padding:40px 44px;color:#fff">
+          <div style="display:inline-flex;align-items:center;gap:7px;background:#ffffff1a;border:1px solid #ffffff2e;padding:5px 12px;border-radius:999px;font-size:12px;font-weight:600;color:#fff">✈ GETTING THERE</div>
+          <h2 style="font-weight:700;font-size:32px;line-height:1.08;letter-spacing:-0.02em;margin-top:18px">Find the cheapest flights to the Riviera</h2>
+          <p style="font-size:15.5px;color:#ffffffcc;margin-top:12px;max-width:420px;text-wrap:pretty">Nice Côte d'Azur airport is the gateway to the coast. Compare fares from the US, UK and beyond and set a price alert before you book.</p>
+          <p style="font-size:11.5px;color:#ffffff88;margin-top:14px">Powered by Travelpayouts · we may earn a commission on bookings</p>
+        </div>
+        <div id="tp-flights" style="min-height:320px;background:#fff;margin:14px;border-radius:16px;overflow:auto;padding:14px"></div>
+      </div>
+    </section>
+    <script is:inline define:vars={{ marker: AFFILIATE.travelpayoutsMarker }}>
+      (function () {
+        var el = document.getElementById('tp-flights');
+        if (!el) return;
+        var s = document.createElement('script');
+        s.async = true;
+        s.charset = 'utf-8';
+        s.src = 'https://tpwgts.com/content?currency=usd&trs=404739&shmarker=' + marker +
+          '&show_hotels=false&powered_by=true&locale=en&searchUrl=www.aviasales.com%2Fsearch' +
+          '&primary_override=%23ff5a3c&color_button=%23ff5a3c&color_icons=%23ff5a3c&secondary=%23FFFFFF' +
+          '&dark=%23262626&light=%23FFFFFF&special=%23C4C4C4&color_focused=%23ff5a3c&border_radius=12' +
+          '&plain=true&promo_id=7879&campaign_id=100';
+        el.appendChild(s);
+      })();
+    </script>
 
     <!-- FAQ -->
     <section style="max-width:960px;margin:0 auto;padding:56px 32px 0">

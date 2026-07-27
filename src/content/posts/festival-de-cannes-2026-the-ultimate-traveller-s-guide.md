@@ -7,7 +7,7 @@ updatedDate: 2026-02-26
 theme: "Events"
 place: "Cannes"
 categories: ["Events", "Destinations", "Activities", "Cannes"]
-heroImage: "https://static.wixstatic.com/media/a1c2e8_d929a4b7e940466daec0fa3987b34e6d~mv2.webp/v1/fill/w_1024,h_669,al_c/a1c2e8_d929a4b7e940466daec0fa3987b34e6d~mv2.webp"
+heroImage: "/images/festival-de-cannes-2026-the-ultimate-traveller-s-guide.webp"
 heroAlt: "International movie stars on the Festival de Cannes red carpet"
 readTime: "13 min read"
 author: "Max"
@@ -15,7 +15,7 @@ tags: ["Festival de Cannes 2026", "Best tips for Festival de Cannes 2026", "How 
 draft: false
 ---
 
-![Festival de Cannes red carpet - Picture courtesy of JDS.fr](https://static.wixstatic.com/media/a1c2e8_d929a4b7e940466daec0fa3987b34e6d~mv2.webp/v1/fill/w_1024,h_669,al_c/a1c2e8_d929a4b7e940466daec0fa3987b34e6d~mv2.webp)
+![Festival de Cannes red carpet - Picture courtesy of JDS.fr](/images/body/festival-de-cannes-2026-the-ultimate-traveller-s-guide-1.webp)
 *Festival de Cannes 2026 Edition - Picture courtesy of JDS.fr*
 
 ## 79th Edition — May 12-23, 2026 — Palais des Festivals, Cannes
