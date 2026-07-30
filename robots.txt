@@ -1,0 +1,8 @@
+# robots.txt — www.moe-jonathanevain.fr
+# Autorise l'exploration de tout le site par tous les moteurs de recherche.
+
+User-agent: *
+Allow: /
+
+# Emplacement du plan du site (sitemap)
+Sitemap: https://moe-jonathanevain.fr/sitemap.xml
