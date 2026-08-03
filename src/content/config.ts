@@ -24,6 +24,8 @@ const posts = defineCollection({
     // Optional Stay22 map embed URL shown in the article body.
     stay22Embed: z.string().optional(),
     tags: z.array(z.string()).default([]),
+    // Optional FAQ pairs → rendered as a section + FAQPage JSON-LD for rich results.
+    faq: z.array(z.object({ q: z.string(), a: z.string() })).default([]),
     draft: z.boolean().default(false),
   }),
 });
