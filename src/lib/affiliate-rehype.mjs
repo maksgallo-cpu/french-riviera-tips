@@ -14,6 +14,7 @@ const AFFILIATE_HOSTS = [
   'aviasales.',
   'tripadvisor.',
   'get.stay22',
+  'viator.',
 ];
 
 function isAffiliate(href) {
