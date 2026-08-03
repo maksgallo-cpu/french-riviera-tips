@@ -101,10 +101,10 @@ Regional **Zou!** buses serve the Roya valley from the coast, but services are l
 
 Breil-sur-Roya makes a peaceful mountain base, and the surrounding villages add charm. Good options:
 
-- **Breil-sur-Roya** — right at the activity hub, on the river and rail line. [See Breil-sur-Roya stays on Booking.com](https://www.booking.com/searchresults.html?ss=Breil-sur-Roya) · [compare on Expedia](https://www.expedia.com/Hotel-Search?destination=Breil-sur-Roya%2C%20France).
-- **Sospel** — a pretty medieval town on the road between Menton and the Roya. [Browse Sospel hotels on Booking.com](https://www.booking.com/searchresults.html?ss=Sospel%2C+French+Riviera).
-- **Saorge & Tende** — perched villages further up the valley, close to the Vallée des Merveilles. [Find Tende accommodation on Booking.com](https://www.booking.com/searchresults.html?ss=Tende%2C+France).
-- **Menton or Nice** — stay on the coast and make it a scenic day trip by car or the Train des Merveilles. [Compare Menton hotels on Expedia](https://www.expedia.com/Hotel-Search?destination=Menton%2C%20France).
+- **Breil-sur-Roya** — right at the activity hub, on the river and rail line. [See Breil-sur-Roya stays on Booking.com](https://booking.stay22.com/frt25/kuxELkY33C) · [compare on Expedia](https://expedia.stay22.com/frt25/zMtdlHurm7).
+- **Sospel** — a pretty medieval town on the road between Menton and the Roya. [Browse Sospel hotels on Booking.com](https://booking.stay22.com/frt25/LAZTuNWT1O).
+- **Saorge & Tende** — perched villages further up the valley, close to the Vallée des Merveilles. [Find Tende accommodation on Booking.com](https://booking.stay22.com/frt25/L5ZSWjtWBA).
+- **Menton or Nice** — stay on the coast and make it a scenic day trip by car or the Train des Merveilles. [Compare Menton hotels on Expedia](https://expedia.stay22.com/frt25/p-f32U0U9U).
 
 ## Tips for a Great Day on the Water
 
