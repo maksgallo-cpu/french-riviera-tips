@@ -6,8 +6,8 @@ pubDate: 2026-08-03
 theme: "Activities"
 place: "Breil-sur-Roya"
 categories: ["Activities", "Hidden Gems"]
-heroImage: "https://commons.wikimedia.org/wiki/Special:FilePath/Vue%20du%20village%20de%20Breil-sur-Roya%20depuis%20la%20rive%20ouest%20du%20lac.JPG?width=1600"
-heroAlt: "The village of Breil-sur-Roya beside the Roya river in the Alpes-Maritimes, the base for canyoning and rafting"
+heroImage: "https://commons.wikimedia.org/wiki/Special:FilePath/Canyoning%20Gorges%20de%20Galamus%20-%20Inextremis%20Aventura.jpg?width=1600"
+heroAlt: "Canyoning down a gorge waterfall on a rope in the Alpes-Maritimes, near the Roya Valley"
 readTime: "10 min read"
 author: "Max"
 tags: ["french riviera tips", "canyoning", "rafting", "Roya valley", "Breil-sur-Roya", "Maglia canyon", "Alpes-Maritimes", "whitewater", "outdoor activities", "day trip from Nice"]
