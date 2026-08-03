@@ -18,12 +18,12 @@ const featured = latest[0];
 const featSide = latest.slice(1, 4);
 
 const themes = [
-  { name: 'Destinations', href: '/destinations', bg: 'var(--azure-tint)', bd: 'oklch(0.90 0.035 232)', ic: 'var(--azure)', gl: '◎', d: 'Towns & villages worth your time' },
-  { name: 'Hotels', href: '/hotels', bg: 'var(--coral-tint)', bd: 'oklch(0.90 0.04 45)', ic: 'var(--coral)', gl: '⌂', d: 'Where to stay, every budget' },
-  { name: 'Activities', href: '/activities', bg: 'oklch(0.96 0.03 150)', bd: 'oklch(0.90 0.035 150)', ic: 'oklch(0.60 0.12 150)', gl: '◈', d: 'Beaches, sports & culture' },
-  { name: 'Events', href: '/events', bg: 'oklch(0.96 0.035 325)', bd: 'oklch(0.90 0.04 325)', ic: 'oklch(0.58 0.16 325)', gl: '✦', d: 'F1, festivals, carnivals & regattas' },
-  { name: 'Hidden Gems', href: '/hidden-gems', bg: 'oklch(0.96 0.03 195)', bd: 'oklch(0.90 0.035 195)', ic: 'oklch(0.55 0.10 200)', gl: '◇', d: 'Secret beaches & quiet villages' },
-  { name: 'Tips', href: '/tips', bg: 'oklch(0.96 0.04 85)', bd: 'oklch(0.90 0.05 85)', ic: 'oklch(0.70 0.13 78)', gl: '✷', d: 'Parking, budget & getting around' },
+  { name: 'Destinations', href: '/destinations', bg: 'var(--azure-tint)', bd: 'oklch(0.90 0.035 232)', ic: 'var(--azure)', gl: '◎', d: 'Towns & villages worth your time', img: '/images/nice-promenade.png', alt: 'Palm-lined Promenade des Anglais along the seafront in Nice' },
+  { name: 'Hotels', href: '/hotels', bg: 'var(--coral-tint)', bd: 'oklch(0.90 0.04 45)', ic: 'var(--coral)', gl: '⌂', d: 'Where to stay, every budget', img: '/images/best-hotels-near-nice-port-top-3-accommodation-picks.jpg', alt: 'Hotels overlooking the harbour at Nice port' },
+  { name: 'Activities', href: '/activities', bg: 'oklch(0.96 0.03 150)', bd: 'oklch(0.90 0.035 150)', ic: 'oklch(0.60 0.12 150)', gl: '◈', d: 'Beaches, sports & culture', img: 'https://images.unsplash.com/photo-1530053969600-caed2596d242?w=1200&q=80&auto=format&fit=crop', alt: 'Kayaking on the turquoise French Riviera coastline' },
+  { name: 'Events', href: '/events', bg: 'oklch(0.96 0.035 325)', bd: 'oklch(0.90 0.04 325)', ic: 'oklch(0.58 0.16 325)', gl: '✦', d: 'F1, festivals, carnivals & regattas', img: '/images/complete-guide-to-the-monaco-f1-grand-prix-2026.jpg', alt: 'Formula 1 cars racing through the streets of Monaco' },
+  { name: 'Hidden Gems', href: '/hidden-gems', bg: 'oklch(0.96 0.03 195)', bd: 'oklch(0.90 0.035 195)', ic: 'oklch(0.55 0.10 200)', gl: '◇', d: 'Secret beaches & quiet villages', img: '/images/secret-beach-la-darse-in-villefranche-sur-mer-c.jpg', alt: 'La Darse cove and marina in Villefranche-sur-Mer' },
+  { name: 'Tips', href: '/tips', bg: 'oklch(0.96 0.04 85)', bd: 'oklch(0.90 0.05 85)', ic: 'oklch(0.70 0.13 78)', gl: '✷', d: 'Parking, budget & getting around', img: '/images/how-to-get-around-the-french-riviera-from-menton-to-saint-tropez.jpg', alt: 'Public transport for getting around the French Riviera' },
 ];
 
 const iconic = [
@@ -87,7 +87,7 @@ const title = "French Riviera Tips | Local Guide to the Côte d'Azur | Nice, Can
     <section class="wrap" style="padding-top:36px">
       <div role="img" aria-label="Nice promenade des anglais" style="position:relative;border-radius:26px;overflow:hidden;background:#0b2b3f url(/images/nice-promenade.png) center 40%/cover no-repeat;min-height:460px;display:flex;align-items:flex-end">
         <div style="position:absolute;inset:0;background:linear-gradient(180deg,oklch(0.30 0.06 250/0.05) 0%,oklch(0.24 0.06 250/0.72) 100%)"></div>
-        <div style="position:relative;padding:46px;color:#fff;max-width:740px">
+        <div style="position:relative;padding:46px;margin-bottom:50px;color:#fff;max-width:740px">
           <div style="display:inline-flex;align-items:center;gap:7px;background:oklch(0.99 0.004 85/0.2);border:1px solid #ffffff55;padding:6px 13px;border-radius:999px;font-size:12.5px;font-weight:600;margin-bottom:18px;backdrop-filter:blur(4px)">✦ Local tips, updated for 2026</div>
           <h1 style="font-weight:800;font-size:54px;line-height:1.0;letter-spacing:-0.03em;text-wrap:balance">Your complete guide to the Côte d'Azur.</h1>
           <p style="font-size:18px;margin-top:16px;max-width:540px;color:#ffffffdd;text-wrap:pretty">Where to stay, what to see, the events worth the trip, and the hidden gems only locals know — from Nice, Cannes & Monaco to secret beaches.</p>
@@ -107,10 +107,14 @@ const title = "French Riviera Tips | Local Guide to the Côte d'Azur | Nice, Can
       </div>
       <div class="grid-3">
         {themes.map((t) => (
-          <a href={t.href} style={`display:flex;flex-direction:column;background:${t.bg};border:1px solid ${t.bd};border-radius:20px;padding:26px;min-height:180px`}>
-            <div style={`width:50px;height:50px;border-radius:14px;background:${t.ic};display:flex;align-items:center;justify-content:center;color:#fff;font-size:24px`}>{t.gl}</div>
-            <h3 style="font-weight:700;font-size:22px;margin-top:auto">{t.name}</h3>
-            <p style="font-size:14.5px;color:var(--soft);margin-top:4px">{t.d}</p>
+          <a href={t.href} style={`display:flex;flex-direction:column;background:${t.bg};border:1px solid ${t.bd};border-radius:20px;overflow:hidden`}>
+            <div role="img" aria-label={t.alt} style={`position:relative;height:132px;background:#0b2b3f url(${t.img}) center/cover no-repeat`}>
+              <div style={`position:absolute;left:20px;bottom:-24px;width:50px;height:50px;border-radius:14px;background:${t.ic};display:flex;align-items:center;justify-content:center;color:#fff;font-size:24px;box-shadow:0 6px 16px oklch(0.24 0.03 255/0.28)`}>{t.gl}</div>
+            </div>
+            <div style="padding:34px 24px 24px">
+              <h3 style="font-weight:700;font-size:22px">{t.name}</h3>
+              <p style="font-size:14.5px;color:var(--soft);margin-top:4px">{t.d}</p>
+            </div>
           </a>
         ))}
       </div>
@@ -244,8 +248,13 @@ const title = "French Riviera Tips | Local Guide to the Côte d'Azur | Nice, Can
           <p style="font-size:15.5px;color:#ffffffcc;margin-top:12px;max-width:420px;text-wrap:pretty">Nice Côte d'Azur airport is the gateway to the coast. Compare fares from the US, UK and beyond and set a price alert before you book.</p>
           <p style="font-size:11.5px;color:#ffffff88;margin-top:14px">Powered by Travelpayouts · we may earn a commission on bookings</p>
         </div>
-        <div id="tp-flights" style="min-height:320px;background:#fff;margin:14px;border-radius:16px;overflow:auto;padding:14px">
-          <script is:inline async charset="utf-8" src={`https://tp.media/content?currency=usd&trs=404739&shmarker=${AFFILIATE.travelpayoutsMarker}&show_hotels=false&powered_by=true&locale=en&searchUrl=www.aviasales.com%2Fsearch&primary_override=%23ff5a3c&color_button=%23ff5a3c&color_icons=%23ff5a3c&secondary=%23FFFFFF&dark=%23262626&light=%23FFFFFF&special=%23C4C4C4&color_focused=%23ff5a3c&border_radius=12&plain=true&promo_id=7879&campaign_id=100`}></script>
+        <div id="tp-flights" style="min-height:320px;background:#fff;margin:14px;border-radius:16px;overflow:auto;padding:14px;display:flex;flex-direction:column">
+          <a id="tp-fallback" href="https://www.kiwi.com/en/search/results/new-york-united-states/nice-france" rel="sponsored nofollow" style="margin:auto;text-align:center;color:oklch(0.36 0.062 244);text-decoration:none">
+            <div style="font-family:'Bricolage Grotesque';font-weight:700;font-size:19px">Search flights to Nice (NCE)</div>
+            <div style="font-size:13.5px;color:oklch(0.50 0.02 255);margin-top:6px;max-width:260px">Live fare search loads here on the published site.</div>
+            <span style="display:inline-block;margin-top:16px;background:var(--coral);color:#fff;font-weight:700;font-size:14px;padding:11px 22px;border-radius:10px">Compare fares →</span>
+          </a>
+          <script is:inline async charset="utf-8" onload="var f=document.getElementById('tp-fallback');if(f)f.style.display='none'" src="https://tpwdg.com/content?currency=usd&trs=486874&shmarker=695055&powered_by=true&locale=en&from_name=JFK&to_name=NCE&campaign_id=111&promo_id=4484"></script>
         </div>
       </div>
     </section>
