@@ -62,6 +62,17 @@ const schemas = Array.isArray(jsonld) ? jsonld.filter(Boolean) : [jsonld];
 
   <!-- Stay22 Allez — auto-monetizes affiliate links (Booking, Expedia, Hotels.com…) site-wide -->
   <script defer id="allez" data-id={AFFILIATE.stay22ScriptId} src="https://cdn.stay22.com/allez/allez.js"></script>
+
+  <!-- Travelpayouts Drive — auto-monetization -->
+  <script is:inline nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
+    (function () {
+        var script = document.createElement("script");
+        script.async = 1;
+        script.setAttribute("data-cmp-ab","2");
+        script.src = 'https://tp-em.com/NDg2ODc0.js?t=486874';
+        document.head.appendChild(script);
+    })();
+  </script>
 </head>
 <body>
   <Header />
